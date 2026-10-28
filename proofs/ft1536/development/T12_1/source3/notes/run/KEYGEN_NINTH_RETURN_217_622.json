@@ -1,0 +1,1007 @@
+{
+  "utc": "2026-10-28T09:19:40.505821+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Complete selected original d9 make_fg_step body and caller return, real CRT pair and counted extra-prime u166..334 loop with true !out_ntt fd/gd calls, all335 fd and335 gd product columns and both flat335-word images at one output, actual d9-to10 increment and false next d-loop guard.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/ninthcrt622/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/ninthcrt622/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/ninthcrt622/predecessor_before.log",
+      "sha256": "1d73d56d856fab2bed6283c1d8ecabb4ac87ee178097dd23f96262693766f86f"
+    },
+    {
+      "path": ".build/ninthcrt622/predecessor_after.log",
+      "sha256": "1d73d56d856fab2bed6283c1d8ecabb4ac87ee178097dd23f96262693766f86f"
+    },
+    {
+      "path": ".build/ninthcrt622/entry_reverify_622.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/ninthcrt622/predecessor_verify.py",
+      "sha256": "27b8e81418f85d74889ce7c2fbb62a0036e94e98b1445b420eb3b8fa6c928bac"
+    },
+    {
+      "path": ".build/ninthcrt622/modules.json",
+      "sha256": "1bee50e332801f8cf34e14450dfc94b979db8c38fafdb8c3f926afa7245ff3f3"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_NINTH_FIRST_217_621.json",
+    "sha256": "b40df0ada85e1a4e22c51ebc19a3d18e60df744ea0f76f17576856b130241c01"
+  },
+  "predecessor_bindings_verified": 266,
+  "job": "keygen_ninth622_canonical",
+  "accepted": 16,
+  "receipts": {
+    "path": ".build/jobs/keygen_ninth622_canonical/RECEIPTS.json",
+    "sha256": "4c69a15f7d9f5b07ed4639c6146085a4f6dc281c148305b2297f580e908b7fa3"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_ninth622_canonical/SOURCE_INPUTS.json",
+    "sha256": "6b5c4b337084e271fc612e85584722b7c3d8a59cd382642e33b0d7305abf97d1"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_ninth622_canonical/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_ninth622_canonical/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_ninth622_canonical/PREFLIGHT.json",
+    "sha256": "a950b779b728ba82ac12de4c2f3619b0a7e81e02dbf9d4c3c89cc1d59b24c180"
+  },
+  "modules": [
+    {
+      "module": "Source3.NinthStepCrtBody217",
+      "source": {
+        "path": "formal/Source3/NinthStepCrtBody217.lean",
+        "sha256": "0de6b26f02617d75fd0915d77e142d03cc2c7ef686ebddaf2675bdd9e848dc33"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepCrtBody217.lean",
+        "sha256": "0de6b26f02617d75fd0915d77e142d03cc2c7ef686ebddaf2675bdd9e848dc33"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepCrtBody217.olean",
+        "sha256": "bb888247eb88f1c99a26098deed87a643b16cb378cd1553b77c4dd712b54bf18"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepCrtBody217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepCrtBody217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.374,
+      "maxrss_kib": 3688284
+    },
+    {
+      "module": "Source3.NinthStepCrt217",
+      "source": {
+        "path": "formal/Source3/NinthStepCrt217.lean",
+        "sha256": "580c7d6d977645e9f8d1e3a8c7ec9abf91017740d1a4bfb28f71089e224d1921"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepCrt217.lean",
+        "sha256": "580c7d6d977645e9f8d1e3a8c7ec9abf91017740d1a4bfb28f71089e224d1921"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepCrt217.olean",
+        "sha256": "2199ce3d805c6f12a3d56a341d6147ce34d7487101e6474b12b5214658d4c21b"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepCrt217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepCrt217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.371,
+      "maxrss_kib": 3688284
+    },
+    {
+      "module": "Source3.NinthStepExtraPrime217",
+      "source": {
+        "path": "formal/Source3/NinthStepExtraPrime217.lean",
+        "sha256": "a7ba83dbac87c0012953a1d4ae34e38b36c9e8d8828a359f7ecfba78d3fa1bd8"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepExtraPrime217.lean",
+        "sha256": "a7ba83dbac87c0012953a1d4ae34e38b36c9e8d8828a359f7ecfba78d3fa1bd8"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepExtraPrime217.olean",
+        "sha256": "416535d0affaf3dc8b94d5eae1a2766f38fef10ce445813513b9829dee21b2c1"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraPrime217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraPrime217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.271,
+      "maxrss_kib": 3688284
+    },
+    {
+      "module": "Source3.NinthStepExtraSide217",
+      "source": {
+        "path": "formal/Source3/NinthStepExtraSide217.lean",
+        "sha256": "d31b4e9bb28d3a79be20b4555a068d7e8e5a59714ed9e14ff6cafa77de5eb3dc"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepExtraSide217.lean",
+        "sha256": "d31b4e9bb28d3a79be20b4555a068d7e8e5a59714ed9e14ff6cafa77de5eb3dc"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepExtraSide217.olean",
+        "sha256": "f85daa2129418cda1c2215cc1f01348d7eb5270cf3800d9fc23014b0a801b443"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraSide217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraSide217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.691,
+      "maxrss_kib": 3688284
+    },
+    {
+      "module": "Source3.NinthStepExtraPair217",
+      "source": {
+        "path": "formal/Source3/NinthStepExtraPair217.lean",
+        "sha256": "09085c2c372b8d86b58149fd5f7ca9edf466cbd1dfd9ed64e324c9a6dbe6b4a4"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepExtraPair217.lean",
+        "sha256": "09085c2c372b8d86b58149fd5f7ca9edf466cbd1dfd9ed64e324c9a6dbe6b4a4"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepExtraPair217.olean",
+        "sha256": "e360ce7460bf6286be974abe25b396a2a87c6de1dadf1f5151f88d64dde0a23f"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraPair217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraPair217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 58.003,
+      "maxrss_kib": 4884144
+    },
+    {
+      "module": "Source3.NinthStepExtraInner217",
+      "source": {
+        "path": "formal/Source3/NinthStepExtraInner217.lean",
+        "sha256": "6c8d9ec396792c3f699dbbdc1086e4e3ee4b75b266acd5e4a297f0e38cdd68e0"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepExtraInner217.lean",
+        "sha256": "6c8d9ec396792c3f699dbbdc1086e4e3ee4b75b266acd5e4a297f0e38cdd68e0"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepExtraInner217.olean",
+        "sha256": "fa177431eb58344008d24412acd2d506d49dc23bb4b57b8c4124376a8c057b96"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraInner217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraInner217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 28.795,
+      "maxrss_kib": 5728584
+    },
+    {
+      "module": "Source3.NinthStepCrtKeep217",
+      "source": {
+        "path": "formal/Source3/NinthStepCrtKeep217.lean",
+        "sha256": "ec5583eafbeec877b6fa63caa6167760012ecb7b07a178901fefaf6d379bb28f"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepCrtKeep217.lean",
+        "sha256": "ec5583eafbeec877b6fa63caa6167760012ecb7b07a178901fefaf6d379bb28f"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepCrtKeep217.olean",
+        "sha256": "eecebffabed9475aed19bdedab630b94c6f65dd9dbacc5177b2c98289a283d64"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepCrtKeep217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepCrtKeep217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.223,
+      "maxrss_kib": 5728584
+    },
+    {
+      "module": "Source3.NinthStepCrtFirst217",
+      "source": {
+        "path": "formal/Source3/NinthStepCrtFirst217.lean",
+        "sha256": "f519717afd6154fe9868c7d1cb0f061af31cfb451d4f5ca7af33645946e765b6"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepCrtFirst217.lean",
+        "sha256": "f519717afd6154fe9868c7d1cb0f061af31cfb451d4f5ca7af33645946e765b6"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepCrtFirst217.olean",
+        "sha256": "3c35703d2904e308b412a0057a510a0963a11c59f7354a1db8515c54ccd955c9"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepCrtFirst217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepCrtFirst217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 5.327,
+      "maxrss_kib": 5728584
+    },
+    {
+      "module": "Source3.NinthStepExtraLoopBase217",
+      "source": {
+        "path": "formal/Source3/NinthStepExtraLoopBase217.lean",
+        "sha256": "8ecb6be62990d4229f265bd00d28fd6b26fb0c0eb0dae29f5ecc406a124ccc6c"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepExtraLoopBase217.lean",
+        "sha256": "8ecb6be62990d4229f265bd00d28fd6b26fb0c0eb0dae29f5ecc406a124ccc6c"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepExtraLoopBase217.olean",
+        "sha256": "8feb3e6ce615425b0f9206315db91af11df977edd02a3d4ed660d3d570d78253"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraLoopBase217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraLoopBase217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.678,
+      "maxrss_kib": 5728584
+    },
+    {
+      "module": "Source3.NinthStepExtraInvariant217",
+      "source": {
+        "path": "formal/Source3/NinthStepExtraInvariant217.lean",
+        "sha256": "63a579e1640f7216a74d839ef1aa0684e79d402a234d5b27e0710d1e227011c7"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepExtraInvariant217.lean",
+        "sha256": "63a579e1640f7216a74d839ef1aa0684e79d402a234d5b27e0710d1e227011c7"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepExtraInvariant217.olean",
+        "sha256": "556ae458ed5fb5d06c9581e266884f4b66764c4976c990c082a750aa9885cab0"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraInvariant217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraInvariant217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.121,
+      "maxrss_kib": 5728584
+    },
+    {
+      "module": "Source3.NinthStepExtraIteration217",
+      "source": {
+        "path": "formal/Source3/NinthStepExtraIteration217.lean",
+        "sha256": "1387fc8d6cb687a2aa7cca3ab0f55db5ce05e72a702a649c677db6e07e7677bc"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepExtraIteration217.lean",
+        "sha256": "1387fc8d6cb687a2aa7cca3ab0f55db5ce05e72a702a649c677db6e07e7677bc"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepExtraIteration217.olean",
+        "sha256": "2715acb13064cf344bb1d5945685d4c6338cd90d4f88a94d3beab98d179c5a6e"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraIteration217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraIteration217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.023,
+      "maxrss_kib": 5728584
+    },
+    {
+      "module": "Source3.NinthStepExtraLoop217",
+      "source": {
+        "path": "formal/Source3/NinthStepExtraLoop217.lean",
+        "sha256": "c45ffe13fe65c997ec549040853c7deef7c9e65ccc7266140f70a92e0d450cb4"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepExtraLoop217.lean",
+        "sha256": "c45ffe13fe65c997ec549040853c7deef7c9e65ccc7266140f70a92e0d450cb4"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepExtraLoop217.olean",
+        "sha256": "e09cb6a711e460b8fc4262316353ca48a9ad2bd7d6d682a9b9e07ee61043424a"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraLoop217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepExtraLoop217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.972,
+      "maxrss_kib": 5728584
+    },
+    {
+      "module": "Source3.NinthStepFull217",
+      "source": {
+        "path": "formal/Source3/NinthStepFull217.lean",
+        "sha256": "e91e6e6fa18179ab601a09a982575ae68524a808e29d0b39ad699a68a3771bd4"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepFull217.lean",
+        "sha256": "e91e6e6fa18179ab601a09a982575ae68524a808e29d0b39ad699a68a3771bd4"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepFull217.olean",
+        "sha256": "7cb036cc48f21f62b68c927e0ab00c9b4965a55d15993f69d2593dc76b6e9935"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepFull217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepFull217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 5.577,
+      "maxrss_kib": 5728584
+    },
+    {
+      "module": "Source3.NinthStepImage217",
+      "source": {
+        "path": "formal/Source3/NinthStepImage217.lean",
+        "sha256": "d0b3eccba8a85dca5a8bfebdd1462bab420b2155613d221e0f1682dda7b92299"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepImage217.lean",
+        "sha256": "d0b3eccba8a85dca5a8bfebdd1462bab420b2155613d221e0f1682dda7b92299"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepImage217.olean",
+        "sha256": "99eaf30b10b383047dd30ee484e69f10d0a4d14051bb5b7224bb2e0952648402"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepImage217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepImage217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 5.082,
+      "maxrss_kib": 5728584
+    },
+    {
+      "module": "Source3.NinthStepReturn217",
+      "source": {
+        "path": "formal/Source3/NinthStepReturn217.lean",
+        "sha256": "3e3ff9ab1ee1bddbe632981b540fef14aaac00eb1156c406de29a6a8e55a7646"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepReturn217.lean",
+        "sha256": "3e3ff9ab1ee1bddbe632981b540fef14aaac00eb1156c406de29a6a8e55a7646"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepReturn217.olean",
+        "sha256": "6226fb6dcf28e558492d230083121e5702c7e8e91a4267bab34d3c3e89b49087"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepReturn217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepReturn217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 5.426,
+      "maxrss_kib": 5728584
+    },
+    {
+      "module": "Source3.NinthStepReturnAudit217",
+      "source": {
+        "path": "formal/Source3/NinthStepReturnAudit217.lean",
+        "sha256": "6094129ad14149859db6a7bac679312e39c8ca1cf1a81c59830b3cac38870c3e"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_ninth622_canonical/formal/Source3/NinthStepReturnAudit217.lean",
+        "sha256": "6094129ad14149859db6a7bac679312e39c8ca1cf1a81c59830b3cac38870c3e"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_ninth622_canonical/lib/Source3/NinthStepReturnAudit217.olean",
+        "sha256": "573a5776cd529a1be490865ef0bc1046e0c7d7518368629ce608efd007de9071"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepReturnAudit217.stdout",
+        "sha256": "eff48eaf724f018e1c97a00d99c5bc91db8026d7c957cd3a8c8ad2aac7b852a5"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_ninth622_canonical/logs/Source3_NinthStepReturnAudit217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.979,
+      "maxrss_kib": 5728584
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.NinthStepCrtBody217.rows166": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrtBody217.heap5": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrtBody217.arrays5": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrtBody217.locals5": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrtBody217.prime_load": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrtBody217.prefix_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrtBody217.object5": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrtBody217.data_after": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrtBody217.tmp_read0": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrtBody217.loop_input": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrtBody217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.sep_at": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.fs_word": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.gs_word": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.gm_word": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.fs_gm": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.gs_gm": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.fs_gs": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.input": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.binding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.call_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.object_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.rev_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.outer_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.load_keep": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.data_keep": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrt217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPrime217.declared_locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPrime217.arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPrime217.locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPrime217.p_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPrime217.i_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPrime217.r_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPrime217.rx_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPrime217.u_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPrime217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPrime217.basic": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraSide217.sep_at": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraSide217.walk_shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraSide217.walk_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraSide217.walk_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraSide217.forward_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPair217.before_t1": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPair217.middle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPair217.data": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPair217.twiddle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPair217.f_after_g": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPair217.side_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPair217.out_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPair217.normal_seq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPair217.continue_side": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraPair217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraInner217.fs_gm_out": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraInner217.fs_igm_out": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraInner217.gs_gm_out": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraInner217.gs_igm_out": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraInner217.heapP": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraInner217.inputP": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraInner217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrtKeep217.column": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrtFirst217.part3": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepCrtFirst217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.loopPremises": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.outside_cols": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.gm_cols": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.igm_cols": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.t1_cols": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.object_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.rev_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.revB_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.scoped_local": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.scope_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.put_same": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.init_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.incrementK": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.counter_u": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.counter_tlen": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.counter_heap": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.counter_arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.scope_arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.outer_counter": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.input_counter": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.earlier_fs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.earlier_gs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.earlier_col": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.image_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.fs_keep_u": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.gs_keep_u": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.extraRow_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoopBase217.guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraIteration217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoop217.remaining": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepExtraLoop217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepFull217.complete": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepFull217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepImage217.pointer": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepImage217.f_column": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepImage217.g_column": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepImage217.gather": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepImage217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepReturn217.increment_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepReturn217.d_ten": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepReturn217.next_guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.NinthStepReturn217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_NINTH_RETURN_217_FAILURES_622.json",
+    "sha256": "32803456c0ca0bcb76b20d7322b085f3afa70e4350cc9c1b4b43c22d135090d2"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_NINTH_RETURN_217_622_REPORT.md",
+    "sha256": "f994423c31039799338b7772e22e2519798bc68b51b7664baffbdc6780a0392a"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/ninthcrt622/evidence_config.json",
+    "sha256": "e69b56cd5e0808e8d5f73fe317ec97372c4a6089e139830e47d66b63174cc036"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 623,
+  "next_obligations": [
+    "Compose actual d1..d9 executions into original counted outer loop and progress source top continuation to root solve",
+    "Root/certificate/codec/full source-to-fiber B1"
+  ],
+  "not_claimed": [
+    "Whole outer-loop composition, root solve, or complete KeyGen source-to-fiber B1",
+    "Mathematical NTT/root/table/CRT/centering/Montgomery/integer laws",
+    "Full KeyGen/Sign/compiler/security/unconditional positivity/probability",
+    "Independent review"
+  ]
+}

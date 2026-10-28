@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; complete selected d9 return checkpoint622 accepted;623 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+622 canonical keygen_ninth622_canonical accepted16/16,0/0,104 standard-only axiom results, evidence verified. Actual selected d9 full body: 166-limb CRT fs/gs
+pair, extra-prime loop u166..334 including true !out_ntt fd/gd inverse calls,
+all335 fd/gd product columns and both335-word flat images at one output;
+actual ninth call/return, d9→10 increment and false next guard. Original
+source/earlier calls constructed, no desired output/run premise; exact
+executed-word formulas only. Whole outer-loop composition still open.
+142.913s,maxRSS5728584KiB. ENTRY74673/predecessor621266 unchanged before/after.
+Eleven local attempts retain one corrected Fin4 byte-index elaboration
+failure; no new counterexample/resource failure/suppression/failed cache.
+Independent review NOT_RUN. Prior retained findings remain. Report/evidence
+KEYGEN_NINTH_RETURN_217_622_REPORT.md and matching JSON; failure register
+KEYGEN_NINTH_RETURN_217_FAILURES_622.json.
+Next623 compose actual d1..d9 bodies and increments into the original outer
+loop and continue source top to root solve; root/certificate/codec/full B1
+remain open. No mathematical CRT/NTT/root/table/centering/Montgomery/integer
+law or broad KeyGen/Sign/compiler/security/unconditional positivity/
+probability. Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five
+do_sign unchanged. Foreign PROMPT_T14 untouched; one Lean job, -M6144 and
+fixed limits, exact local commits, no push. Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected d9 first-prime loop checkpoint621 accepted;622 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11758,3 +11784,33 @@ Job record (621): keygen_ninth621_012 — ACCEPTED_LOCAL audit, six interfaces/9
 Job record (621): canonical keygen_ninth621_canonical — ACCEPTED16/16,0/0,97 standard-only axiom results, 51.014s,maxRSS3680756KiB. Entry74673/predecessor62098 unchanged; next evidence/local commit then d9 CRT.
 
 Job record (621 checkpoint): evidence PASS266 bindings,16 accepted/97 standard-only results, two retained elaboration failures; entry74673/predecessor62098 unchanged. Exact own paths only; foreign work excluded, no push. Continue622 d9 CRT and extra-prime loop.
+
+Job record (622 start):621 committed7013dc58; no push. Continue actual d9 CRT pair, extra-prime u166..334 including true output branch and caller return; runtime .build/ninthcrt622. Verify entry/predecessor before first proof job.
+
+Job record (622): fresh ENTRY74673 and predecessor621266 evidence bindings verified before first622 source/job. Next actual d9 rebuild_CRT body.
+
+Job record (622): keygen_ninth622_001 — ACCEPTED_LOCAL NinthStepCrtBody217,3.225s,0/0: actual rebuild_CRT callee at num2/xlen=xstride166, indexed rows, source tmp[0] store, co-loop and signed normalization over332 words. Next fs/gs call pair.
+
+Job record (622): keygen_ninth622_002 — ACCEPTED_LOCAL NinthStepCrt217,3.672s,0/0: original d9 fs/gs rebuild_CRT calls preserve separate images/static objects and out_ntt0. Next extra-prime prefix and side engines.
+
+Job record (622): keygen_ninth622_003 — RETAINED partial attempt: extra prefix accepted, side exit1 because byte-index Fin4 was adapted to Fin2; raw snapshots/logs preserved, no mathematical counterexample. Restore byte index and retry.
+
+Job record (622): keygen_ninth622_004 — ACCEPTED_LOCAL2/2,0/0: extra-prime prefix Rx(slen166), signed-store and Level0 forward/product sides; byte width restored. Next both-side iteration with true output branch.
+
+Job record (622): keygen_ninth622_005 — ACCEPTED_LOCAL2/2,0/0: actual both-side extra-prime walks/forward/products and generic row iteration for u<335, including true !out_ntt fd/gd inverse calls and same-output products. Next preserve first-loop columns through CRT.
+
+Job record (622): keygen_ninth622_006 — ACCEPTED_LOCAL2/2,0/0: actual d9 prefix+first loop+CRT, both reassembled332-word images and all166 first product columns survive part3 on one output. Next extra-prime loop u166..334.
+
+Job record (622): keygen_ninth622_007 — ACCEPTED_LOCAL4/4,0/0: actual extra-prime loop u166..334, including true output branch and false u<335 exit, preserving all first/extra columns and same-witness tables. Next full d9 source body.
+
+Job record (622): keygen_ninth622_008 — ACCEPTED_LOCAL NinthStepFull217,5.727s,0/0: actual selected complete d9 body, first and extra columns on same execution witness, true output branch included. Next export335-word sections and caller return.
+
+Job record (622): keygen_ninth622_009 — ACCEPTED_LOCAL NinthStepImage217,4.926s,0/0: gather335 columns per side into both335-word sections from same actual d9 source run. Next caller return and terminal false d10 guard.
+
+Job record (622): keygen_ninth622_010 — ACCEPTED_LOCAL NinthStepReturn217,5.329s,0/0: actual ninth caller return, both335-word sections and d9-to-d10 increment/false guard, on same selected execution. Next audit/canonical replay.
+
+Job record (622): keygen_ninth622_011 — ACCEPTED_LOCAL audit, seven interfaces/104 axiom results,0/0. Next canonical16-module replay, pin recheck and evidence.
+
+Job record (622): canonical keygen_ninth622_canonical — ACCEPTED16/16,0/0,104 standard-only axiom results, 142.913s,maxRSS5728584KiB. Entry74673/predecessor621266 unchanged; next evidence/local commit then outer-loop composition.
+
+Job record (622 checkpoint): evidence PASS255 bindings,16 accepted/104 standard-only results, one retained elaboration failure; entry74673/predecessor621266 unchanged. Exact own paths only; foreign work excluded, no push. Continue623 whole outer-loop composition.

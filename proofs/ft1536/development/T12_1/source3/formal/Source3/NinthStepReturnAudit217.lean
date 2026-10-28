@@ -1,0 +1,117 @@
+import Source3.NinthStepReturn217
+
+set_option maxRecDepth 262144
+set_option maxHeartbeats 2000000
+set_option Elab.async false
+
+#check FT1536.Source3.NinthStepCrtBody217.source
+#check FT1536.Source3.NinthStepCrt217.source
+#check FT1536.Source3.NinthStepCrtFirst217.source
+#check FT1536.Source3.NinthStepExtraLoop217.source
+#check FT1536.Source3.NinthStepFull217.source
+#check FT1536.Source3.NinthStepImage217.source
+#check FT1536.Source3.NinthStepReturn217.source
+#print axioms FT1536.Source3.NinthStepCrtBody217.rows166
+#print axioms FT1536.Source3.NinthStepCrtBody217.heap5
+#print axioms FT1536.Source3.NinthStepCrtBody217.arrays5
+#print axioms FT1536.Source3.NinthStepCrtBody217.locals5
+#print axioms FT1536.Source3.NinthStepCrtBody217.prime_load
+#print axioms FT1536.Source3.NinthStepCrtBody217.prefix_source
+#print axioms FT1536.Source3.NinthStepCrtBody217.object5
+#print axioms FT1536.Source3.NinthStepCrtBody217.data_after
+#print axioms FT1536.Source3.NinthStepCrtBody217.tmp_read0
+#print axioms FT1536.Source3.NinthStepCrtBody217.loop_input
+#print axioms FT1536.Source3.NinthStepCrtBody217.source
+#print axioms FT1536.Source3.NinthStepCrt217.sep_at
+#print axioms FT1536.Source3.NinthStepCrt217.fs_word
+#print axioms FT1536.Source3.NinthStepCrt217.gs_word
+#print axioms FT1536.Source3.NinthStepCrt217.gm_word
+#print axioms FT1536.Source3.NinthStepCrt217.fs_gm
+#print axioms FT1536.Source3.NinthStepCrt217.gs_gm
+#print axioms FT1536.Source3.NinthStepCrt217.fs_gs
+#print axioms FT1536.Source3.NinthStepCrt217.input
+#print axioms FT1536.Source3.NinthStepCrt217.binding
+#print axioms FT1536.Source3.NinthStepCrt217.call_source
+#print axioms FT1536.Source3.NinthStepCrt217.object_keep
+#print axioms FT1536.Source3.NinthStepCrt217.rev_keep
+#print axioms FT1536.Source3.NinthStepCrt217.outer_keep
+#print axioms FT1536.Source3.NinthStepCrt217.load_keep
+#print axioms FT1536.Source3.NinthStepCrt217.data_keep
+#print axioms FT1536.Source3.NinthStepCrt217.source
+#print axioms FT1536.Source3.NinthStepExtraPrime217.declared_locals
+#print axioms FT1536.Source3.NinthStepExtraPrime217.arrays
+#print axioms FT1536.Source3.NinthStepExtraPrime217.locals
+#print axioms FT1536.Source3.NinthStepExtraPrime217.p_cell
+#print axioms FT1536.Source3.NinthStepExtraPrime217.i_cell
+#print axioms FT1536.Source3.NinthStepExtraPrime217.r_cell
+#print axioms FT1536.Source3.NinthStepExtraPrime217.rx_cell
+#print axioms FT1536.Source3.NinthStepExtraPrime217.u_cell
+#print axioms FT1536.Source3.NinthStepExtraPrime217.source
+#print axioms FT1536.Source3.NinthStepExtraPrime217.basic
+#print axioms FT1536.Source3.NinthStepExtraSide217.sep_at
+#print axioms FT1536.Source3.NinthStepExtraSide217.walk_shape
+#print axioms FT1536.Source3.NinthStepExtraSide217.walk_fixed
+#print axioms FT1536.Source3.NinthStepExtraSide217.walk_source
+#print axioms FT1536.Source3.NinthStepExtraSide217.forward_source
+#print axioms FT1536.Source3.NinthStepExtraPair217.before_t1
+#print axioms FT1536.Source3.NinthStepExtraPair217.middle
+#print axioms FT1536.Source3.NinthStepExtraPair217.data
+#print axioms FT1536.Source3.NinthStepExtraPair217.twiddle
+#print axioms FT1536.Source3.NinthStepExtraPair217.f_after_g
+#print axioms FT1536.Source3.NinthStepExtraPair217.side_source
+#print axioms FT1536.Source3.NinthStepExtraPair217.out_source
+#print axioms FT1536.Source3.NinthStepExtraPair217.normal_seq
+#print axioms FT1536.Source3.NinthStepExtraPair217.continue_side
+#print axioms FT1536.Source3.NinthStepExtraPair217.source
+#print axioms FT1536.Source3.NinthStepExtraInner217.fs_gm_out
+#print axioms FT1536.Source3.NinthStepExtraInner217.fs_igm_out
+#print axioms FT1536.Source3.NinthStepExtraInner217.gs_gm_out
+#print axioms FT1536.Source3.NinthStepExtraInner217.gs_igm_out
+#print axioms FT1536.Source3.NinthStepExtraInner217.heapP
+#print axioms FT1536.Source3.NinthStepExtraInner217.inputP
+#print axioms FT1536.Source3.NinthStepExtraInner217.source
+#print axioms FT1536.Source3.NinthStepCrtKeep217.column
+#print axioms FT1536.Source3.NinthStepCrtFirst217.part3
+#print axioms FT1536.Source3.NinthStepCrtFirst217.source
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.loopPremises
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.outside_cols
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.gm_cols
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.igm_cols
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.t1_cols
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.object_keep
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.rev_keep
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.revB_keep
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.scoped_local
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.scope_source
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.put_same
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.init_source
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.incrementK
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.counter_u
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.counter_tlen
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.counter_heap
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.counter_arrays
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.scope_arrays
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.outer_counter
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.input_counter
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.earlier_fs
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.earlier_gs
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.earlier_col
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.image_keep
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.fs_keep_u
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.gs_keep_u
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.extraRow_value
+#print axioms FT1536.Source3.NinthStepExtraLoopBase217.guard
+#print axioms FT1536.Source3.NinthStepExtraIteration217.source
+#print axioms FT1536.Source3.NinthStepExtraLoop217.remaining
+#print axioms FT1536.Source3.NinthStepExtraLoop217.source
+#print axioms FT1536.Source3.NinthStepFull217.complete
+#print axioms FT1536.Source3.NinthStepFull217.source
+#print axioms FT1536.Source3.NinthStepImage217.pointer
+#print axioms FT1536.Source3.NinthStepImage217.f_column
+#print axioms FT1536.Source3.NinthStepImage217.g_column
+#print axioms FT1536.Source3.NinthStepImage217.gather
+#print axioms FT1536.Source3.NinthStepImage217.source
+#print axioms FT1536.Source3.NinthStepReturn217.increment_source
+#print axioms FT1536.Source3.NinthStepReturn217.d_ten
+#print axioms FT1536.Source3.NinthStepReturn217.next_guard
+#print axioms FT1536.Source3.NinthStepReturn217.source
