@@ -1,0 +1,112 @@
+import Source3.SixthStepFirst217
+
+set_option maxRecDepth 262144
+set_option maxHeartbeats 2000000
+set_option Elab.async false
+
+open FT1536.Source3
+#check IndexedPrimeRows217.source
+#check SixthStepGenerator217.generator
+#check SixthStepMarch217.sourcePair
+#check SixthStepIteration217.source
+#check SixthStepLoop217.source
+#check SixthStepFirst217.source
+#print axioms IndexedPrimeRows217.present
+#print axioms IndexedPrimeRows217.source
+#print axioms SixthStepGenerator217.outer
+#print axioms SixthStepGenerator217.basic_of
+#print axioms SixthStepGenerator217.transport
+#print axioms SixthStepGenerator217.transport_full
+#print axioms SixthStepGenerator217.g_read
+#print axioms SixthStepGenerator217.generator_input
+#print axioms SixthStepGenerator217.generator
+#print axioms SixthStepGenerator217.generator_args
+#print axioms SixthStepGenerator217.generator_call
+#print axioms SixthStepGenerator217.generatorT
+#print axioms SixthStepProduct217.mid_locals
+#print axioms SixthStepProduct217.mid_arrays
+#print axioms SixthStepProduct217.binding
+#print axioms SixthStepProduct217.initial_source
+#print axioms SixthStepProduct217.fixed
+#print axioms SixthStepProduct217.source
+#print axioms SixthStepMarch217.ordered
+#print axioms SixthStepMarch217.copy_shape
+#print axioms SixthStepMarch217.product_shape
+#print axioms SixthStepMarch217.copy_bounds
+#print axioms SixthStepMarch217.product_bound
+#print axioms SixthStepMarch217.copy_data
+#print axioms SixthStepMarch217.copy_twiddle
+#print axioms SixthStepMarch217.product_data
+#print axioms SixthStepMarch217.product_twiddle
+#print axioms SixthStepMarch217.fs_gs
+#print axioms SixthStepMarch217.product_t1
+#print axioms SixthStepMarch217.product_cross
+#print axioms SixthStepMarch217.midC_locals
+#print axioms SixthStepMarch217.midC_arrays
+#print axioms SixthStepMarch217.bindingC
+#print axioms SixthStepMarch217.initialC_source
+#print axioms SixthStepMarch217.fixedC
+#print axioms SixthStepMarch217.sourceC
+#print axioms SixthStepMarch217.skipC_source
+#print axioms SixthStepMarch217.sepI
+#print axioms SixthStepMarch217.tw_sepI
+#print axioms SixthStepMarch217.inputI
+#print axioms SixthStepMarch217.sourceI
+#print axioms SixthStepMarch217.sourceCol
+#print axioms SixthStepMarch217.tail_shape
+#print axioms SixthStepMarch217.out_skip
+#print axioms SixthStepMarch217.sourcePair
+#print axioms SixthStepPrime217.heapP
+#print axioms SixthStepPrime217.declS_arrays
+#print axioms SixthStepPrime217.arraysP
+#print axioms SixthStepPrime217.not_private
+#print axioms SixthStepPrime217.declS_locals
+#print axioms SixthStepPrime217.localsP
+#print axioms SixthStepPrime217.p_cellP
+#print axioms SixthStepPrime217.i_cellP
+#print axioms SixthStepPrime217.r2_cellP
+#print axioms SixthStepPrime217.v_declP
+#print axioms SixthStepPrime217.p_read
+#print axioms SixthStepPrime217.p_source
+#print axioms SixthStepPrime217.i_source
+#print axioms SixthStepPrime217.r_source
+#print axioms SixthStepPrime217.appendP
+#print axioms SixthStepPrime217.basicP
+#print axioms SixthStepPrime217.inputP
+#print axioms SixthStepInner217.col_outside
+#print axioms SixthStepInner217.inner_source
+#print axioms SixthStepLoopBase217.init0_heap
+#print axioms SixthStepLoopBase217.init_source
+#print axioms SixthStepLoopBase217.scope_source
+#print axioms SixthStepLoopBase217.scope_locals
+#print axioms SixthStepLoopBase217.incrementK
+#print axioms SixthStepLoopBase217.counter_u
+#print axioms SixthStepLoopBase217.counter_slen
+#print axioms SixthStepLoopBase217.diff_copy
+#print axioms SixthStepLoopBase217.diff_prod
+#print axioms SixthStepLoopBase217.keep_fd
+#print axioms SixthStepLoopBase217.keep_gd
+#print axioms SixthStepLoopBase217.keep_fs
+#print axioms SixthStepLoopBase217.keep_gs
+#print axioms SixthStepLoopBase217.object_keep
+#print axioms SixthStepLoopBase217.rev_keep
+#print axioms SixthStepLoopBase217.revB_keep
+#print axioms SixthStepLoopBase217.scope_arrays
+#print axioms SixthStepLoopBase217.counter_arrays
+#print axioms SixthStepLoopBase217.counter_heap
+#print axioms SixthStepLoopBase217.outer_counter
+#print axioms SixthStepLoopBase217.input_counter
+#print axioms SixthStepLoopBase217.primeRow_value
+#print axioms SixthStepLoopBase217.guard
+#print axioms SixthStepIteration217.source
+#print axioms SixthStepLoop217.remaining
+#print axioms SixthStepLoop217.flatF
+#print axioms SixthStepLoop217.flatG
+#print axioms SixthStepLoop217.source
+#print axioms SixthStepContext217.outer
+#print axioms SixthStepContext217.u_declared
+#print axioms SixthStepContext217.stable_entry
+#print axioms SixthStepContext217.object
+#print axioms SixthStepContext217.rev_source
+#print axioms SixthStepContext217.rev_binding
+#print axioms SixthStepFirst217.source

@@ -1,3 +1,33 @@
+# SEED9_R1 — ACTIVE; selected d6 first-prime loop checkpoint611 accepted;612 next
+
+Owner resumed2026-10-28; continue in source3, no push/subagents/reviewers/
+relay/migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+611 canonical keygen_sixth611_canonical accepted17/17,0/0,99 standard-only
+axiom results. Generic source-bound PRIMES3 row lookup for k<1101 avoids
+literal enumeration. Actual selected d6 first-prime loop u0..21 at
+n16/hn8,slen22/tlen42; original prefix/generator/copy/products/inverse and
+exit. One inductive witness retains each row's table,22 fd/gd product
+columns and both352-word inverse images at gd@1006. Actual caller/prefix
+derived from completed d1..d5; no desired run/output premise.
+52.762s,maxRSS3709488KiB. ENTRY74673/predecessor610120 unchanged before/after.
+10 local attempts retain1 -M6144 OOM in specialized source-table lookup;
+abstract-list lemma fixed it without changing limits. No mathematical
+counterexample/suppression/failed cache; independent review NOT_RUN.
+Supplement KEYGEN_CRTBODY_TMPCOUNT_606_609_SUPPLEMENT_611.md corrects two
+sealed copied docstring labels (actual tmp keep domains6/12); proofs and
+older source/evidence unchanged. Report/evidence KEYGEN_SIXTH_FIRST_217_
+611_REPORT.md and matching JSON; failure register KEYGEN_SIXTH_FIRST_217_
+FAILURES_611.json.
+Next612 actual d6 CRT pair, extra-prime loop u22..41 and whole d6 return;
+use IndexedPrimeRows217.source for all rows and avoid specializing the
+large table in simplification. Then d7..9/root/certificate/codec/full B1.
+No mathematical NTT/root/table/CRT/centering/Montgomery/integer law or
+broad KeyGen/Sign/compiler/security/unconditional positivity/probability.
+Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign
+unchanged. Foreign PROMPT_T14 untouched; one Lean job, -M6144 fixed; no push.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected d6 changed-layout prefix checkpoint610 accepted;611 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11166,3 +11196,33 @@ Job record (610): keygen_sixth610_005 — ACCEPTED_LOCAL audit, six interfaces/6
 Job record (610): canonical keygen_sixth610_canonical — ACCEPTED7/7,0/0,68 standard-only results,29.437s,maxRSS4817056KiB. Entry74673/predecessor250 unchanged; next evidence/local commit then611 d6 body.
 
 Job record (610 checkpoint): evidence PASS120 bindings; entry74673/predecessor609250 unchanged,7 accepted/68 standard-only results. Exact own11 paths; foreign work excluded, no push. Continue611 generic indexed primes and d6 body.
+
+Job record (611 start):610 committedbed0c45420f0a45c1918f0206c6b923f50009577; no push. Continue general pinned PRIMES3 indexing and actual d6 first-prime generator/copy/product/inverse loops; runtime .build/sixthbody611. Verify entry/predecessor before first proof job.
+
+Job record (611): fresh ENTRY74673/predecessor610120 evidence bindings verified before first611 source/job. Next prove generic indexed PRIMES3 source lookup from the pinned table, then d6 first-prime loop.
+
+Job record (611): keygen_sixth611_001 RETAINED_RESOURCE_FAILURE: generic PRIMES3 index lemma ran77.650s and hit the unchanged -M6144 ceiling with INTERNAL PANIC out of memory, while specializing list lookup/simplification to the large pinned table. Replace the specialized simplifier with an abstract-list presence lemma and then apply the existing source_length theorem; no limit change, no mathematical counterexample.
+
+Job record (611): keygen_sixth611_002 — ACCEPTED_LOCAL IndexedPrimeRows217,4.124s,0/0: source-bound indexed PRIMES3 row for every k<rowCount (1101 ternary rows), proved by an abstract-list lemma and the existing table-length theorem. Avoids enumerating fixed row constants; retained001 OOM, no limit change. Next d6 generator/product source frames.
+
+Job record (611): keygen_sixth611_003 — ACCEPTED_LOCAL2/2,0/0: actual d6 Level3 generator over16 words and product march with stride42/hn8 at the correct gd@1006 root, for u<42. Next source copy/inverse geometry and paired iteration.
+
+Job record (611): keygen_sixth611_004 — ACCEPTED_LOCAL3/3,0/0: actual d6 geometry,16-word copy at stride22 and Level3 inverse NTT source columns. Next both-side source composition.
+
+Job record (611): keygen_sixth611_005 — ACCEPTED_LOCAL2/2,0/0: both-side d6 copy/product/inverse tail at u<22, exact fd/gd images at the new roots and outside-read keeps. Next original per-prime prefix/generator/paired iteration.
+
+Job record (611): keygen_sixth611_006 — ACCEPTED_LOCAL2/2,0/0: actual d6 prime prefix plus complete two-sided iteration for any u<22, with same-output products/inverse images and static/outside keeps. Next general indexed row/counter and the 22-row invariant.
+
+Job record (611): keygen_sixth611_007 — ACCEPTED_LOCAL SixthStepLoopBase217,3.372s,0/0: actual d6 loop control, symbolic indexed PRIMES3 rows u<22 and cross-column keeps at gd@1006. Next inductive invariant, iteration and loop.
+
+Job record (611): keygen_sixth611_008 — ACCEPTED_LOCAL3/3,0/0: inductive pending/written invariant, actual source iteration and complete counted first-prime loop u0..21, with source-indexed rows and both352-word inverse images. Next derive actual sixth caller context and bind the complete first-loop witness.
+
+Job record (611): keygen_sixth611_009 — ACCEPTED_LOCAL2/2,0/0: actual sixth caller/prefix and counted first-prime loop u0..21 share one output, with indexed pinned rows,22 fd/gd columns and both352-word inverse images. Next full axiom audit/canonical replay, then d6 CRT.
+
+Documentation supplement (611): sealed FourthStepCrtBody216.source and FifthStepCrtBody217.source copied the phrase three tmp words; the actual checked keep domains are j<6 and j<12 respectively. KEYGEN_CRTBODY_TMPCOUNT_606_609_SUPPLEMENT_611.md records the correction without changing sealed606/609 source or evidence.
+
+Job record (611): keygen_sixth611_010 — ACCEPTED_LOCAL audit, six public interfaces/99 standard-only axiom results,0/0. Next canonical17-module replay, pins/evidence and local checkpoint; then d6 CRT/extra-prime body.
+
+Job record (611): canonical keygen_sixth611_canonical — ACCEPTED17/17,0/0,99 standard-only results,52.762s,maxRSS3709488KiB. Entry74673/predecessor120 unchanged; next evidence/local commit then612 d6 CRT.
+
+Job record (611 checkpoint): evidence PASS255 bindings; entry74673/predecessor610120 unchanged,17 accepted/99 standard-only results. Exact own22 paths including documentation supplement; foreign work excluded, no push. Continue612 d6 CRT.
