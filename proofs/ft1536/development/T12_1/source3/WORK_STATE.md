@@ -1,3 +1,31 @@
+# SEED9_R1 — ACTIVE; complete selected d4 return checkpoint606 accepted;607 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+606 canonical keygen_fourth606_canonical accepted17/17,0/0,116 standard-only
+axiom results. Actual selected d4 full body: six-limb CRT fs/gs pair,
+additional-prime loop u6..11, all twelve fd/gd columns and both384-word
+flat images at one output; actual fourth call/return, d4→5 increment and
+true next guard. Original source execution and earlier calls are constructed,
+no desired output/run premise. Exact executed-word formulas only.
+93.417s,maxRSS5816740KiB. ENTRY74673/predecessor605361 unchanged before/after.
+14 local attempts retain1 uint64/uint32 scaffolding elaboration failure;
+no new resource failure, suppression or failed cache. Independent review
+NOT_RUN. Sealed605 resource failure and604 documentation supplement remain.
+Report/evidence KEYGEN_FOURTH_RETURN_216_606_REPORT.md and matching JSON;
+retained register KEYGEN_FOURTH_RETURN_216_FAILURES_606.json.
+Next607 actual d5 entry/layout/move: input prior fd@670/gd@1054, but new
+output fd@670/gd@1022; fs@1374/gs@1758/gm@2142/igm@2174/t1@2206.
+Use n32/hn16,slen12/tlen22 and preserve source layout during overlap move;
+then d5 body and d6..9/root/certificate/codec/full B1.
+No mathematical CRT/NTT/root/table/centering/Montgomery/integer law or
+broad KeyGen/Sign/compiler/security/unconditional positivity/probability.
+Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign
+unchanged. Foreign PROMPT_T14 untouched; one Lean job, -M6144 and fixed
+resource limits; exact local commits, no push. Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected d4 first-prime loop checkpoint605 accepted;606 next
 
 Owner resumed2026-10-28; continue in source3, no push/subagents/reviewers/
@@ -10904,3 +10932,39 @@ Job record (605): keygen_fourth605_canonical02 — ACCEPTED16/16,0/0 after corre
 Job record (605): canonical keygen_fourth605_canonical02 — ACCEPTED16/16,0/0,109 standard-only results,52.820s,maxRSS3669548KiB. Next final post-replay pins/evidence/local commit, then606 d4 CRT.
 
 Job record (605 checkpoint): evidence PASS361 bindings; entry74673/predecessor604120 unchanged after canonical02,16 accepted/109 standard-only results. Exact own21 paths including 604 documentation supplement; foreign work excluded, no push. Continue606 d4 CRT.
+
+Job record (606 start):605 committed349f0838cdb7d0d811f80db6ab956025170d7ff0; no push. Continue actual d4 CRT pair and additional-prime u6..11; runtime .build/fourthcrt606, verify entry and predecessor before first proof job.
+
+Job record (606): fresh ENTRY74673/predecessor605361 bindings verified before first606 source/job. Next bind PRIMES3 rows6..11 from the pinned source, then compose the actual six-limb CRT pair.
+
+Job record (606): keygen_fourth606_001 — ACCEPTED_LOCAL FourthStepPrimeRows216,3.973s,0/0: PRIMES3 rows6..11, including the CRT boundary row6 and later additional rows, bound to pinned source text by kernel checks. Next the real six-limb rebuild body.
+
+Job record (606): keygen_fourth606_002 — ACCEPTED_LOCAL FourthStepCrtBody216,3.222s,0/0: original rebuild_CRT callee at num64/xlen=xstride6, actual initial prime store, five co-rounds and signed-normalization walk over384 words, exact words6 image. Next bind actual fs/gs call pair at d4.
+
+Job record (606): keygen_fourth606_003 — ACCEPTED_LOCAL FourthStepCrt216,3.373s,0/0: original fs/gs rebuild_CRT call pair through bound six-limb source bodies, same-output normalized384-word images, readonly static tables and caller/outside-read keeps. Next extra-prime u6..11 source iteration.
+
+Job record (606): keygen_fourth606_004 — ACCEPTED_LOCAL2/2,0/0: actual d4 additional-prime p/p0i/R2/Rx prefix (slen6), signed-store walks over384 source words, Level5 forward over64 words and stride12 product calls. Next both-side source composition and one complete extra iteration.
+
+Job record (606): keygen_fourth606_005 — ACCEPTED_LOCAL2/2,0/0: actual both-side d4 extra-prime walks/forward/products and complete generic row iteration for u<12, with same-output data/column images and earlier-read keeps. Next connect first-loop product columns through the actual part3 CRT pair.
+
+Job record (606): keygen_fourth606_006 — ACCEPTED_LOCAL2/2,0/0: part3 CRT pair preserves every fd/gd product column; actual selected fourth prefix+first six-prime loop+CRT is constructed at one output with both reassembled384-word images and all first six product columns. Next inductive additional-prime loop u6..11.
+
+Job record (606): keygen_fourth606_007 RETAINED_ELABORATION_FAILURE: scaffold numeral substitution changed put_same carry type BitVec64 to BitVec32; Lean also reported a generated error placeholder, not a source proof marker. Restore the actual uint64 type and recheck; no source/domain change.
+
+Job record (606): keygen_fourth606_008 — ACCEPTED_LOCAL2/2,0/0: original extra-loop control/guard, exact PRIMES3 rows6..11 and outside geometry, plus invariant for preserving the first six product columns, six further images, normalized data and static tables. Corrected uint64 type from007. Next source iteration and counted loop.
+
+Job record (606): keygen_fourth606_009 — ACCEPTED_LOCAL FourthStepExtraIteration216,2.570s,0/0: each actual u6..11 scoped iteration and increment preserves the six first-loop columns and earlier extra columns, full CRT input rows and tables on the same witness. Next count all six extra rows and export part4.
+
+Job record (606): keygen_fourth606_010 — ACCEPTED_LOCAL FourthStepExtraLoop216,2.583s,0/0: actual additional-prime loop executes u6..11 through false u<12 exit; Active exports all first/extra product columns, same-witness generator tables and preserved CRT rows/static objects. Next full d4 source association and flat caller images.
+
+Job record (606): keygen_fourth606_011 — ACCEPTED_LOCAL FourthStepFull216,2.571s,0/0: complete original d4 body, real earlier-call chain and Bind, with Active at u12 containing all twelve fd/gd columns on the same output. Next flat384-word images and actual caller return/d5 guard.
+
+Job record (606): keygen_fourth606_012 — ACCEPTED_LOCAL FourthStepImage216,3.373s,0/0: all twelve fd/gd columns gathered into exact flat384-word arrays on the actual full d4 body output. Next actual caller return and d4→5 true guard.
+
+Job record (606): keygen_fourth606_013 — ACCEPTED_LOCAL FourthStepReturn216,2.524s,0/0: complete original d4 call/enclosing return, both exact384-word arrays and actual d4→5 increment/true next guard. Next full axiom audit/canonical replay, then d5 entry and later B1 obligations.
+
+Job record (606): keygen_fourth606_014 — ACCEPTED_LOCAL FourthStepReturnAudit216,2.472s,0/0: seven checked interfaces/116 standard-only axiom results. Next canonical17-module replay, final pin/evidence checks and local checkpoint; then d5.
+
+Job record (606): canonical keygen_fourth606_canonical — ACCEPTED17/17,0/0,116 standard-only results,93.417s,maxRSS5816740KiB. Entry74673/predecessor361 unchanged; next evidence/local commit, then607 d5 entry.
+
+Job record (606 checkpoint): evidence PASS278 bindings; entry74673/predecessor605361 unchanged,17 accepted/116 standard-only results. Exact own21 paths; foreign work excluded, no push. Continue607 actual d5 entry/layout/move.

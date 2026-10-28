@@ -1,0 +1,1091 @@
+{
+  "utc": "2026-10-28T07:36:27.368637+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Complete selected original d4 make_fg_step body and caller return, real CRT pair and counted extra-prime u6..11 loop, all 24 fd/gd product columns and both flat384-word images at one output, actual d4-to5 increment and true next d-loop guard.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/fourthcrt606/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/fourthcrt606/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/fourthcrt606/predecessor_before.log",
+      "sha256": "8d95a63315c67555ef855481907197cb7029a2e22c7dbc6ac8673cce3636928e"
+    },
+    {
+      "path": ".build/fourthcrt606/predecessor_after.log",
+      "sha256": "8d95a63315c67555ef855481907197cb7029a2e22c7dbc6ac8673cce3636928e"
+    },
+    {
+      "path": ".build/fourthcrt606/entry_reverify_606.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/fourthcrt606/predecessor_verify.py",
+      "sha256": "0da0b8a54bc2b6ef637c4fe57175bb459affeda6e79d9efffadf5533e0bba686"
+    },
+    {
+      "path": ".build/fourthcrt606/modules.json",
+      "sha256": "198f03d6384d8e545a77d57d573c09441069fe6eb5934adddcff1ef694c3f16b"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_FOURTH_FIRST_216_605.json",
+    "sha256": "54f1dbb440666beb52ece5df6aaadc05433df2adfa03fdfbb069296c5d3c373a"
+  },
+  "predecessor_bindings_verified": 361,
+  "job": "keygen_fourth606_canonical",
+  "accepted": 17,
+  "receipts": {
+    "path": ".build/jobs/keygen_fourth606_canonical/RECEIPTS.json",
+    "sha256": "cf0253eb1d0d1069186b83d86e71cfe53d8a0bd5d4dfbae1f148d072bf6772ce"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_fourth606_canonical/SOURCE_INPUTS.json",
+    "sha256": "50b99e354fda84774ba340bb5465bf5ca8985a7f9059efb324e0888e35cff834"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_fourth606_canonical/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_fourth606_canonical/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_fourth606_canonical/PREFLIGHT.json",
+    "sha256": "1064d85b92390d4ddc01536715b10113b9253f08b13535e8be8e38fd6d1b1d50"
+  },
+  "modules": [
+    {
+      "module": "Source3.FourthStepPrimeRows216",
+      "source": {
+        "path": "formal/Source3/FourthStepPrimeRows216.lean",
+        "sha256": "3e7d5dbbeba6bec17a0a69e2266324061ef9f90ce51ba4e9779248e6a1a94e5a"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepPrimeRows216.lean",
+        "sha256": "3e7d5dbbeba6bec17a0a69e2266324061ef9f90ce51ba4e9779248e6a1a94e5a"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepPrimeRows216.olean",
+        "sha256": "5581e7d2f85ccad1835972d7c814102dcf988b0d67dead098a9b5e2030b1ce76"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepPrimeRows216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepPrimeRows216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.024,
+      "maxrss_kib": 3744760
+    },
+    {
+      "module": "Source3.FourthStepCrtBody216",
+      "source": {
+        "path": "formal/Source3/FourthStepCrtBody216.lean",
+        "sha256": "035f45f53705e74f59f231268908ef8c5c76b6283f1bf8bdd10deac5394b46b4"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepCrtBody216.lean",
+        "sha256": "035f45f53705e74f59f231268908ef8c5c76b6283f1bf8bdd10deac5394b46b4"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepCrtBody216.olean",
+        "sha256": "6c6dba0f5df56e75f5463c38d4e68ad97cb9fc9fa1cc1cc57a15712a517a6ea5"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepCrtBody216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepCrtBody216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.171,
+      "maxrss_kib": 3744760
+    },
+    {
+      "module": "Source3.FourthStepCrt216",
+      "source": {
+        "path": "formal/Source3/FourthStepCrt216.lean",
+        "sha256": "fd3d50a5d2af33e492593d2026457dde26a7ba36e9e4c28c4a6a686da0a7bca7"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepCrt216.lean",
+        "sha256": "fd3d50a5d2af33e492593d2026457dde26a7ba36e9e4c28c4a6a686da0a7bca7"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepCrt216.olean",
+        "sha256": "33ca8ef6809b5973235c097cee441d350b688543289686aac7ef41a079d6f6b5"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepCrt216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepCrt216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.221,
+      "maxrss_kib": 3744760
+    },
+    {
+      "module": "Source3.FourthStepExtraPrime216",
+      "source": {
+        "path": "formal/Source3/FourthStepExtraPrime216.lean",
+        "sha256": "0fd41ca53b539985c4cf0d71a2c02b9d2ef3fac49834bfaed968f47d9ca2bac2"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepExtraPrime216.lean",
+        "sha256": "0fd41ca53b539985c4cf0d71a2c02b9d2ef3fac49834bfaed968f47d9ca2bac2"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepExtraPrime216.olean",
+        "sha256": "e6bb7b965a50973f3c3fdb94536d01e5db66ee1890efc8c4e821aa8a59af2ea1"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraPrime216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraPrime216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.271,
+      "maxrss_kib": 3744760
+    },
+    {
+      "module": "Source3.FourthStepExtraSide216",
+      "source": {
+        "path": "formal/Source3/FourthStepExtraSide216.lean",
+        "sha256": "7ca6358d4f6ffafcbdb12d60d1b96137873885b20835699aabc2db3d7079932b"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepExtraSide216.lean",
+        "sha256": "7ca6358d4f6ffafcbdb12d60d1b96137873885b20835699aabc2db3d7079932b"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepExtraSide216.olean",
+        "sha256": "39d0135a3d333526adecd830eebeb1615bfcd75e04b1df73db049751e66284b1"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraSide216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraSide216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.82,
+      "maxrss_kib": 3744760
+    },
+    {
+      "module": "Source3.FourthStepExtraPair216",
+      "source": {
+        "path": "formal/Source3/FourthStepExtraPair216.lean",
+        "sha256": "09dccc98f31366596ce8ad672fbc0ec2f94453a1660477a3e4a3a6a25205d342"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepExtraPair216.lean",
+        "sha256": "09dccc98f31366596ce8ad672fbc0ec2f94453a1660477a3e4a3a6a25205d342"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepExtraPair216.olean",
+        "sha256": "8018536523c1e0a28f8d553c979f3f242fbbde132e1d3e6c057b3260fd2e5fa1"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraPair216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraPair216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 27.129,
+      "maxrss_kib": 5816740
+    },
+    {
+      "module": "Source3.FourthStepExtraInner216",
+      "source": {
+        "path": "formal/Source3/FourthStepExtraInner216.lean",
+        "sha256": "5493cd9adbb4dba73b45a15a4888f4e2a93c576aa32a3cc0b20a639c841085e1"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepExtraInner216.lean",
+        "sha256": "5493cd9adbb4dba73b45a15a4888f4e2a93c576aa32a3cc0b20a639c841085e1"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepExtraInner216.olean",
+        "sha256": "8084a2e37dabd29ee8710ae9d883697da979cfb44ec0da615d50ee0dccadcdf6"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraInner216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraInner216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 20.713,
+      "maxrss_kib": 5816740
+    },
+    {
+      "module": "Source3.FourthStepCrtKeep216",
+      "source": {
+        "path": "formal/Source3/FourthStepCrtKeep216.lean",
+        "sha256": "f764f43dcca6050c3dc9ffd5c87f99d4dc1e8c5bc059e16d4f3c3103105dd110"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepCrtKeep216.lean",
+        "sha256": "f764f43dcca6050c3dc9ffd5c87f99d4dc1e8c5bc059e16d4f3c3103105dd110"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepCrtKeep216.olean",
+        "sha256": "08bfeea056d24d5ff495a191f2350b65c92f741ac0159013928390d95fec512a"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepCrtKeep216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepCrtKeep216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.323,
+      "maxrss_kib": 5816740
+    },
+    {
+      "module": "Source3.FourthStepCrtFirst216",
+      "source": {
+        "path": "formal/Source3/FourthStepCrtFirst216.lean",
+        "sha256": "d1881519b39c2ea99070c677064961b7f360084845000bf09f017b8495e0578f"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepCrtFirst216.lean",
+        "sha256": "d1881519b39c2ea99070c677064961b7f360084845000bf09f017b8495e0578f"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepCrtFirst216.olean",
+        "sha256": "753800ea975b028fe7334509dcbb609dbc8bf6e5b1f5f787fbc7d9a4facb6133"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepCrtFirst216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepCrtFirst216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.821,
+      "maxrss_kib": 5816740
+    },
+    {
+      "module": "Source3.FourthStepExtraLoopBase216",
+      "source": {
+        "path": "formal/Source3/FourthStepExtraLoopBase216.lean",
+        "sha256": "46055b690ac4fffcef58aed181add077b198a01bae2978856642b9b07e86fd0c"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepExtraLoopBase216.lean",
+        "sha256": "46055b690ac4fffcef58aed181add077b198a01bae2978856642b9b07e86fd0c"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepExtraLoopBase216.olean",
+        "sha256": "02ed1a36603de3f71fdd972cdb9f9ba69d44232ccd60359b209d61951b5fd85a"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraLoopBase216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraLoopBase216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.673,
+      "maxrss_kib": 5816740
+    },
+    {
+      "module": "Source3.FourthStepExtraInvariant216",
+      "source": {
+        "path": "formal/Source3/FourthStepExtraInvariant216.lean",
+        "sha256": "8dded14b8496e43a98b51e538cd0f9051f4235bbcfef682612b817b4ba5efb85"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepExtraInvariant216.lean",
+        "sha256": "8dded14b8496e43a98b51e538cd0f9051f4235bbcfef682612b817b4ba5efb85"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepExtraInvariant216.olean",
+        "sha256": "4ee44ff779caafdf810677d38e2b54084f842e40da273c1dc1bf5b5a12fd6a08"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraInvariant216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraInvariant216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.671,
+      "maxrss_kib": 5816740
+    },
+    {
+      "module": "Source3.FourthStepExtraIteration216",
+      "source": {
+        "path": "formal/Source3/FourthStepExtraIteration216.lean",
+        "sha256": "2f13759790e260dd759d46db17b9e91617249cff291a80a8efcfbe08f2a59ff7"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepExtraIteration216.lean",
+        "sha256": "2f13759790e260dd759d46db17b9e91617249cff291a80a8efcfbe08f2a59ff7"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepExtraIteration216.olean",
+        "sha256": "996a0234bf7b53e47ba1de95c3d711bd03d8e34d874ddc96586c4bfc7f3abe22"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraIteration216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraIteration216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.822,
+      "maxrss_kib": 5816740
+    },
+    {
+      "module": "Source3.FourthStepExtraLoop216",
+      "source": {
+        "path": "formal/Source3/FourthStepExtraLoop216.lean",
+        "sha256": "60a9d91d8505224d3bdb2ec06b16a83e44b2ac504404b3205ed9b031e502afde"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepExtraLoop216.lean",
+        "sha256": "60a9d91d8505224d3bdb2ec06b16a83e44b2ac504404b3205ed9b031e502afde"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepExtraLoop216.olean",
+        "sha256": "464ed9c47ddc01ecb57ef0db61bda4ac38ce0b977e5958d837fa7ddadc706cd2"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraLoop216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepExtraLoop216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.62,
+      "maxrss_kib": 5816740
+    },
+    {
+      "module": "Source3.FourthStepFull216",
+      "source": {
+        "path": "formal/Source3/FourthStepFull216.lean",
+        "sha256": "6286c5d8bc577509e040c7fc2a886bceedd2d53b39b3cf3422a0c8ad7cd192e2"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepFull216.lean",
+        "sha256": "6286c5d8bc577509e040c7fc2a886bceedd2d53b39b3cf3422a0c8ad7cd192e2"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepFull216.olean",
+        "sha256": "e163d2fa9190104a2587489a39ddaf2780eb2f4d4f1bd0c83e09d9ab57afab7c"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepFull216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepFull216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.82,
+      "maxrss_kib": 5816740
+    },
+    {
+      "module": "Source3.FourthStepImage216",
+      "source": {
+        "path": "formal/Source3/FourthStepImage216.lean",
+        "sha256": "1cf244466e6ba24959015096f1874d699bd8dc1aab4d9b66a30aeab5a7d51a5a"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepImage216.lean",
+        "sha256": "1cf244466e6ba24959015096f1874d699bd8dc1aab4d9b66a30aeab5a7d51a5a"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepImage216.olean",
+        "sha256": "d434f85ce328d1f5b805bda59e1de17766c83ee1cbe3a7a8e7d71e1f06a33da2"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepImage216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepImage216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.772,
+      "maxrss_kib": 5816740
+    },
+    {
+      "module": "Source3.FourthStepReturn216",
+      "source": {
+        "path": "formal/Source3/FourthStepReturn216.lean",
+        "sha256": "c9faf9facbd2e4b5fdf0337a51a035320f11ee213fc47567fd665c342d225b3d"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepReturn216.lean",
+        "sha256": "c9faf9facbd2e4b5fdf0337a51a035320f11ee213fc47567fd665c342d225b3d"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepReturn216.olean",
+        "sha256": "08bbb51598ab6b4a28aade50ffb9e4a211240b1ac7e4fae1907c427fb291407a"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepReturn216.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepReturn216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.872,
+      "maxrss_kib": 5816740
+    },
+    {
+      "module": "Source3.FourthStepReturnAudit216",
+      "source": {
+        "path": "formal/Source3/FourthStepReturnAudit216.lean",
+        "sha256": "f5896b96a426ee49cd91ed56dc0d81c9a99a66db93859013751f3de8a300d9bf"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_fourth606_canonical/formal/Source3/FourthStepReturnAudit216.lean",
+        "sha256": "f5896b96a426ee49cd91ed56dc0d81c9a99a66db93859013751f3de8a300d9bf"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_fourth606_canonical/lib/Source3/FourthStepReturnAudit216.olean",
+        "sha256": "dbe70e2d7ce755a022c408c112f338d121d4c7d4800baa4b60f0ae609a9c5aaf"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepReturnAudit216.stdout",
+        "sha256": "9cf61bdfe653319bd42bc64b82a3345b322842076575e8d899f494169f4a9935"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_fourth606_canonical/logs/Source3_FourthStepReturnAudit216.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.674,
+      "maxrss_kib": 5816740
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.FourthStepPrimeRows216.row6": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepPrimeRows216.row6_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepPrimeRows216.row7": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepPrimeRows216.row7_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepPrimeRows216.row8": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepPrimeRows216.row8_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepPrimeRows216.row9": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepPrimeRows216.row9_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepPrimeRows216.row10": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepPrimeRows216.row10_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepPrimeRows216.row11": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepPrimeRows216.row11_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtBody216.rows6": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtBody216.heap5": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtBody216.arrays5": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtBody216.locals5": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtBody216.prime_load": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtBody216.prefix_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtBody216.object5": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtBody216.data_after": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtBody216.tmp_read0": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtBody216.loop_input": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtBody216.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.sep_at": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.fs_word": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.gs_word": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.gm_word": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.fs_gm": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.gs_gm": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.fs_gs": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.input": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.binding": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.call_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.object_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.rev_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.outer_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.load_keep": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.data_keep": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrt216.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPrime216.declared_locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPrime216.arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPrime216.locals": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPrime216.p_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPrime216.i_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPrime216.r_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPrime216.rx_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPrime216.u_cell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPrime216.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPrime216.basic": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraSide216.sep_at": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraSide216.walk_shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraSide216.walk_fixed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraSide216.walk_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraSide216.forward_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPair216.before_t1": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPair216.middle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPair216.data": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPair216.twiddle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPair216.f_after_g": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPair216.side_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPair216.out_skip": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPair216.normal_seq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPair216.continue_side": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraPair216.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraInner216.fs_gm_out": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraInner216.fs_igm_out": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraInner216.gs_gm_out": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraInner216.gs_igm_out": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraInner216.heapP": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraInner216.inputP": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraInner216.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtKeep216.column": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtFirst216.part3": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepCrtFirst216.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.loopPremises": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.outside_cols": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.gm_cols": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.igm_cols": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.t1_cols": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.object_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.rev_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.revB_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.scoped_local": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.scope_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.put_same": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.init_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.incrementK": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.counter_u": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.counter_tlen": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.counter_heap": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.counter_arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.scope_arrays": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.outer_counter": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.input_counter": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.earlier_fs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.earlier_gs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.earlier_col": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.image_keep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.fs_keep_u": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.gs_keep_u": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.extraRow_value": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoopBase216.guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraIteration216.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoop216.remaining": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepExtraLoop216.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepFull216.complete": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepFull216.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepImage216.pointer": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepImage216.f_column": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepImage216.g_column": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepImage216.gather": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepImage216.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepReturn216.increment_source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepReturn216.d_five": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepReturn216.next_guard": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.FourthStepReturn216.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_FOURTH_RETURN_216_FAILURES_606.json",
+    "sha256": "7436edceed6387a86eea27e1eaa6ac256baed40c2fe6a4a1d74b7f5b324e0e39"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_FOURTH_RETURN_216_606_REPORT.md",
+    "sha256": "d6255ec77f189785034b947e9794285c2d3563ec8121f24237dfa5848bc2de7a"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/fourthcrt606/evidence_config.json",
+    "sha256": "66aff9364f6afeac4dc223a0883cd22c9d0449e26f450f49f991c50cb2058b95"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 607,
+  "next_obligations": [
+    "Actual d5 and later d levels, root/certificate/codec/full source-to-fiber B1"
+  ],
+  "not_claimed": [
+    "Later d5..9 step execution or complete KeyGen source-to-fiber B1",
+    "Mathematical NTT/root/table/CRT/centering/Montgomery/integer laws",
+    "Full KeyGen/Sign/compiler/security/unconditional positivity/probability",
+    "Independent review"
+  ]
+}
