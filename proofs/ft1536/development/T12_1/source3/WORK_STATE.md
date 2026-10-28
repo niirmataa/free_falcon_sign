@@ -1,3 +1,28 @@
+# SEED9_R1 — ACTIVE; Bezout part7 compositional lexer checkpoint639 accepted;640 next
+
+Owner resumed 2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+639 canonical keygen_lexer639_canonical accepted 10/10, clean, 33 standard-only
+axiom results, 220 evidence bindings verified. Kernel proves pinned lines4015–
+4022 tokenize compositionally for arbitrary following text, including actual
+fuel and normalization. Actual part7 input splits at the prefix, and existing
+nonvacuous parser audit yields a successful token stream with that prefix.
+This closes the 638 arbitrary-tail lexer gap. Exact part7 AST, loop/branch
+execution, selected branch truth and termination remain OPEN.
+898.942s, maxRSS2246080KiB. ENTRY74673/predecessor638202 unchanged before/after.
+Fourteen local attempts retain five elaboration failures; no limits raised or
+counterexample. Independent review NOT_RUN. Prior retained findings remain.
+Report/evidence KEYGEN_BEZOUT_LEXER_217_639_REPORT.md and matching JSON; failure
+register KEYGEN_BEZOUT_LEXER_217_FAILURES_639.json. Next640 use generic parser
+facts and actual prefix to derive part7 loop/branch AST, then full Bezout/root/
+certificate/codec/full B1. No mathematical NTT/root/table/CRT/centering/
+Montgomery/integer law or broad KeyGen/Sign/compiler/security/unconditional
+positivity/probability. Permanent195 bad bodyHeap/stepState UNUSED; Old110/
+measured/five do_sign unchanged. Foreign PROMPT_T14 untouched; one Lean job,
+-M6144 fixed; no push. Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; conditional Bezout parser factoring checkpoint638 accepted;639 next
 
 Owner resumed 2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -12658,3 +12683,21 @@ Job record (635): keygen_unit635_001 — ACCEPTED_LOCAL diagnostic,23.301s,0/0: 
 - 638 / job `keygen_parser638_014`: ACCEPTED, clean log, 57.907 s, `Source3.BezoutLexerInspect217`; finite fuel diagnostic only; no kernel proof of arbitrary-tail compositionality.
 - 638 / job `keygen_parser638_015`: FAILED, 57.530 s; retained elaboration failure: Lean could not generate a simp equational theorem for overlapping tokenizer patterns; arbitrary-tail compositionality remains open. Further work needs a structural tokenizer proof, not repeated simplification.
 - 638 / job `keygen_parser638_canonical`: ACCEPTED 5/5, clean logs, 317.941 s; axiom audit pending evidence verification. ENTRY and predecessor after-checks passed. Receipt retained.
+
+- 639 started: continue from local checkpoint 2252b387; verify ENTRY and 638 evidence before any 639 source/job. No push.
+- 639 preflight: ENTRY 74673/74673 unchanged; all202 638 evidence bindings verified before source or Lean job. Logs in `.build/bezoutlexer639/`.
+- 639 / job `keygen_lexer639_001`: ACCEPTED, clean log, 85.425 s, `Source3.BezoutLexerPieces217`; kernel proves arbitrary-tail skipBlock for the exact source comment, and individual comment/tab/newline/space tokenizer equations. No full-prefix composition claimed.
+- 639 / job `keygen_lexer639_002`: FAILED, 93.210 s; retained elaboration failure: direct definitional simplification of full post-comment chunk does not expose abstract tail result. Factor one-token equations and compose; no mathematical counterexample.
+- 639 / job `keygen_lexer639_003`: ACCEPTED, clean log, 64.410 s, `Source3.BezoutLexerAtoms217`; ten exact source-token lexer steps with arbitrary following text, no generated tokenizer simp equations.
+- 639 / job `keygen_lexer639_004`: ACCEPTED, clean log, 142.299 s, `Source3.BezoutLexerAfter217`; compositional tokenizer for the post-comment source prefix with arbitrary text after newline, assembled from one-token steps. Failed 002 retained.
+- 639 / job `keygen_lexer639_005`: ACCEPTED, clean log, 157.363 s, `Source3.BezoutLexerBeforeAtoms217`; seven exact one-token lexer equations for for-loop header and r declaration under arbitrary suffix.
+- 639 / job `keygen_lexer639_006`: ACCEPTED, clean log, 167.410 s, `Source3.BezoutLexerBefore217`; compositional tokenizer for pre-comment loop-header prefix with arbitrary following text. Both prefix halves and comment frame now proven separately.
+- 639 / job `keygen_lexer639_007`: ACCEPTED, clean log, 160.095 s, `Source3.BezoutLexerCompose217`; exact full source prefix tokenizer composition for arbitrary following text and fuel, assembled from pre-comment/comment/post-comment facts under unchanged limits. Full normalized lexer, actual part7 parse and execution remain open.
+- 639 / job `keygen_lexer639_008`: ACCEPTED, clean log, 141.172 s, `Source3.BezoutLexerNormalized217`; normalized tokens for source prefix compose with an arbitrary following text under the runner's actual fuel formula. Full actual part7 binding not yet claimed.
+- 639 / job `keygen_lexer639_009`: FAILED, 128.809 s; retained elaboration error: `List.take_add` uses implicit arguments. Structural whole-shape and normalized-token proof otherwise elaborated; repair invocation.
+- 639 / job `keygen_lexer639_010`: FAILED, 203.408 s; retained elaboration error: simp did not expose 185 as 8+177. Use explicit type change to apply List.take_add; no counterexample.
+- 639 / job `keygen_lexer639_011`: ACCEPTED, clean log, 122.741 s, `Source3.BezoutLexerPart7Input217`; actual part7 input is the verified source prefix plus remaining lines, and normalized tokenizer factors exactly over it. Two ordinary take_add elaboration failures 009/010 retained.
+- 639 / job `keygen_lexer639_012`: FAILED, 121.400 s; retained elaboration error: theorem name `prefix` is reserved syntax. Rename theorem; no mathematical counterexample.
+- 639 / job `keygen_lexer639_013`: FAILED, 152.653 s; retained elaboration mismatch: case split rewrote token equality goal to reflexivity. Replace hypothesis with rfl; no mathematical counterexample.
+- 639 / job `keygen_lexer639_014`: ACCEPTED, clean log, 152.877 s, `Source3.BezoutLexerPart7Tokens217`; existing successful part7 parse entails an actual normalized token stream beginning with the pinned prefix. This discharges the arbitrary-tail lexer gap from 638; exact full parsed statement structure and execution remain open. Failed 012/013 retained.
+- 639 / job `keygen_lexer639_canonical`: ACCEPTED 10/10, clean logs, 898.942 s; axiom audit pending evidence verification. ENTRY and predecessor after-checks passed. Receipt retained.
