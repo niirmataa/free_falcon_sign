@@ -1,3 +1,32 @@
+# SEED9_R1 — ACTIVE; selected d4 first-prime loop checkpoint605 accepted;606 next
+
+Owner resumed2026-10-28; continue in source3, no push/subagents/reviewers/
+relay/migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+605 canonical keygen_fourth605_canonical02 accepted16/16,0/0,109 standard-only
+axiom results. Actual d4 first-prime loop u0..5 at n64/hn32, slen6/tlen12,
+real prefix/generator/copy/products/inverse and terminating guard. A single
+inductive source witness retains each row's real table, six fd/gd product
+columns and both384-word inverse images. Actual caller/prefix derived from
+completed d1/d2/d3 source, no desired run/output premise.
+52.820s,maxRSS3669548KiB. ENTRY74673/predecessor604120 unchanged before/after.
+14 local attempts retain2 failures:004 hit -M6144 at redundant s8 rewrite,
+fixed by cached theorem without changing limits;010 needed explicit addr/
+elem association. Initial canonical accepted but six copied stale comment
+labels were corrected before fresh canonical02; both jobs retained.
+604 sealed part1 d3 docstring is a documentation-label error corrected by
+separate KEYGEN_FOURTH_PREFIX_216_604_SUPPLEMENT_605.md; code/proof are d4.
+Report/evidence KEYGEN_FOURTH_FIRST_216_605_REPORT.md and matching JSON;
+retained register KEYGEN_FOURTH_FIRST_216_FAILURES_605.json.
+Next606: actual d4 CRT pair, extra-prime loop u6..11 and whole d4 return;
+then d5..9/root/certificate/codec/full B1. No mathematical NTT/root/table/
+CRT/centering/Montgomery/integer law, broad KeyGen/Sign/compiler/security or
+unconditional positivity/probability. Independent review NOT_RUN.
+Permanent195 bad bodyHeap/stepState UNUSED; sealed predecessors and Old110/
+measured/five do_sign unchanged. Foreign PROMPT_T14 untouched; no push.
+One Lean job, -M6144 and fixed resource limits; continue after local commit.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected d4 prefix checkpoint604 accepted;605 next
 
 Owner resumed2026-10-28; continue in source3, no push/subagents/reviewers/
@@ -10835,3 +10864,43 @@ Job record (604): keygen_fourth604_005 — ACCEPTED_LOCAL audit, five checked in
 Job record (604): canonical keygen_fourth604_canonical — ACCEPTED7/7,0/0,68 standard-only results,35.229s,maxRSS4852712KiB. Entry74673/predecessor206 unchanged; next evidence/local commit, then605 d4 body.
 
 Job record (604 checkpoint): evidence PASS120 bindings; entry74673/predecessor603206 unchanged,7 accepted/68 standard-only results. Exact own11 paths; foreign work excluded, no push. Continue605 actual d4 body.
+
+Job record (605 start):604 committed5d7a629e1beacf27424155d2cd3bf3651f9067d0; no push. Continue actual d4 first-prime generator/copy/product/inverse loops with runtime .build/fourthbody605. Verify entry and predecessor before first proof job.
+
+Job record (605): fresh ENTRY74673/predecessor604120 evidence bindings verified before first605 source/job. Next original d4 generator and product frames; source images only, no NTT/Montgomery law.
+
+Job record (605): keygen_fourth605_001 — ACCEPTED_LOCAL FourthStepGenerator216,4.778s,0/0: concrete d4 Outer/Basic invariants, actual logn6 ternary generator at Level5 with64 gm/igm reads and complete caller/outside keeps; first six pinned prime rows retained. Next u<12 product marches.
+
+Job record (605): keygen_fourth605_002 — ACCEPTED_LOCAL FourthStepProduct216,3.221s,0/0: original d4 fd/gd product loops at n64/hn32, stride12 and any u<12, including exact output words and outside-read keeps. Next source copy/inverse/paired loops, split into small modules under -M6144.
+
+Job record (605): keygen_fourth605_003 — ACCEPTED_LOCAL3/3,0/0: concrete d4 geometry, original64-word copy marches with stride6 and inverse NTT3 column execution at Level5; split into small modules under unchanged -M6144. Next one-side composition and paired fd/gd source tail.
+
+Job record (605): keygen_fourth605_004 — FourthStepColumn216 ACCEPTED_LOCAL,3.121s,0/0; FourthStepPair216 RETAINED_RESOURCE_FAILURE at -M6144 (kernel excessive memory) while rewriting the s8 branch shape before invoking an already-proved exact s8 theorem. Remove the redundant source-shape rewrite, keep limits unchanged, and recheck the pair.
+
+Job record (605): keygen_fourth605_005 — ACCEPTED_LOCAL FourthStepPair216,4.376s,0/0: complete two-sided first-prime tail with both products/inverse images, false !out_ntt skip and separated-read keeps. Removed redundant unfolding of the already-proved s8 statement; retained004 memory-ceiling failure, unchanged -M6144. Next the original row prefix plus generator and pair as one source iteration.
+
+Job record (605): keygen_fourth605_006 — ACCEPTED_LOCAL2/2,0/0: generic first-prime source prefix and complete single d4 iteration at u<6, including actual generator/copy/product/iNTT and both same-output images with outside keeps. Next counted loop over the six actual rows; one retained -M6144 resource failure remains from004.
+
+Job record (605): keygen_fourth605_007 — ACCEPTED_LOCAL FourthStepLoopBase216,3.421s,0/0: actual loop scope/counter/increment, general guard and pinned six-prime row selection, per-column separation/keeps and readonly transports. Next inductive pending/written invariant over u=0..5 on the same source witness.
+
+Job record (605): keygen_fourth605_008 — ACCEPTED_LOCAL FourthStepInvariant216,2.671s,0/0: common pending source rows and written fd/gd+inverse rows indexed by actual six PRIMES3 rows and their same-witness tables. Next prove source iteration preserves the invariant.
+
+Job record (605): keygen_fourth605_009 — ACCEPTED_LOCAL FourthStepIteration216,3.023s,0/0: actual scoped first-prime iteration and u increment preserve the six-row pending/written invariant, including previously completed fd/gd columns and inverse source rows, with the newly generated table on the same witness. Next induction and flat384-word export.
+
+Job record (605): keygen_fourth605_010 RETAINED_ELABORATION_FAILURE: the initial two source-row pointers addr root k j 6 and elem root (k+j*6) differ by Nat addition association; induction and final flat exports elaborated. Add explicit pointer congruence bridges, retaining the original memory/domain assumptions.
+
+Job record (605): keygen_fourth605_011 — ACCEPTED_LOCAL FourthStepLoop216,3.473s,0/0: original counted d4 first-prime loop runs u0..5 to false u<6 guard, preserves all six fd/gd product columns and exports both full384-word inverse images with their actual per-row tables. Explicit addr/elem congruences repaired010. Next link this source loop to the actual fourth call/prefix.
+
+Job record (605): keygen_fourth605_012 — ACCEPTED_LOCAL FourthStepContext216,3.372s,0/0: actual d4 prefix yields loop-start Outer, declared u and readonly prime/REV10 facts from the explicit actual caller. Next no-premise actual fourth first-loop composition.
+
+Job record (605): keygen_fourth605_013 — ACCEPTED_LOCAL FourthStepFirst216,5.630s,0/0: actual selected d1/d2/d3 calls, fourth Bind/prefix and first six-prime loop share one witness; Active exports all six fd/gd product columns and both384-word inverse images with readonly tables. No desired output/run premise. Next109-result axiom audit and canonical16-module replay.
+
+Job record (605): keygen_fourth605_014 — ACCEPTED_LOCAL audit, six public interfaces/109 standard-only axiom results,0/0. Next canonical16-module replay, final pins/evidence and local checkpoint; then d4 CRT/additional-prime body.
+
+Job record (605): keygen_fourth605_canonical — ACCEPTED16/16,0/0, but post-replay review found copied comments with stale d3 row/logn labels in six unsealed605 sources. Correct comments and run a fresh canonical replay of the entire changed dependency closure; preserve this original job. The sealed604 FourthStepPrefix216.part1 docstring also says d3 although its code/proof bind d4; record a separate supplement rather than altering the sealed source.
+
+Job record (605): keygen_fourth605_canonical02 — ACCEPTED16/16,0/0 after correcting copied source comments; original canonical16/16 retained. Next final post-replay pins/evidence, scoped report/supplement and exact local commit, then606 d4 CRT.
+
+Job record (605): canonical keygen_fourth605_canonical02 — ACCEPTED16/16,0/0,109 standard-only results,52.820s,maxRSS3669548KiB. Next final post-replay pins/evidence/local commit, then606 d4 CRT.
+
+Job record (605 checkpoint): evidence PASS361 bindings; entry74673/predecessor604120 unchanged after canonical02,16 accepted/109 standard-only results. Exact own21 paths including 604 documentation supplement; foreign work excluded, no push. Continue606 d4 CRT.
