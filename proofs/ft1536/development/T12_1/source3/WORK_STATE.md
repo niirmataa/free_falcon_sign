@@ -1,3 +1,30 @@
+# SEED9_R1 — ACTIVE; selected d6 changed-layout prefix checkpoint610 accepted;611 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+610 canonical keygen_sixth610_canonical accepted7/7,0/0,68 standard-only
+axiom results. Actual d6 call entry after complete d5, n16/hn8,
+MAX_BL_SMALL3 lengths22/42, original part0/part1 and overlapping2816-byte
+move with both352-word fs/gs images. Previous source gd@1022 and new output
+gd@1006 are explicitly distinct; no desired run/output premise.
+New roots fd670/gd1006/fs1342/gs1694/gm2046/igm2062/t12078.
+29.437s,maxRSS4817056KiB. ENTRY74673/predecessor609250 unchanged before/after.
+5 local Lean attempts accepted,0 failures; no resource/suppression/failed
+cache. Independent review NOT_RUN. Report/evidence KEYGEN_SIXTH_PREFIX_
+217_610_REPORT.md and matching JSON; failure register KEYGEN_SIXTH_PREFIX_
+217_FAILURES_610.json.
+Next611: a generic source-bound PRIMES3 row-index helper using
+KeygenPrimeTableBinding.source_length and exact values[k], then actual d6
+first-prime loop u0..21 at n16/hn8,slen22,tlen42; product root gd@1006.
+Then CRT, extra primes u22..41 and d6 return, d7..9/root/certificate/codec/
+full B1. No mathematical NTT/root/table/CRT/centering/Montgomery/integer
+law or broad KeyGen/Sign/compiler/security/unconditional positivity/
+probability. Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/
+five do_sign unchanged; foreign PROMPT_T14 untouched. One Lean process,
+-M6144 and fixed limits; exact local commits, no push.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; complete selected d5 return checkpoint609 accepted;610 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11121,3 +11148,21 @@ Job record (609): keygen_fifth609_010 — ACCEPTED_LOCAL audit, seven public int
 Job record (609): canonical keygen_fifth609_canonical — ACCEPTED17/17,0/0,124 standard-only results,94.266s,maxRSS5836432KiB. Entry74673/predecessor300 unchanged; next evidence/local commit then610 d6 entry.
 
 Job record (609 checkpoint): evidence PASS250 bindings; entry74673/predecessor608300 unchanged,17 accepted/124 standard-only results. Exact own21 paths; foreign work excluded, no push. Continue610 actual d6 entry/layout/move.
+
+Job record (610 start):609 committed11be7578c342769c795299bec24359c911996368; no push. Continue actual d6 entry/lengths/layout/overlap move; preserve prior gd@1022 as source while new gd@1006 is destination. Runtime .build/sixth610; verify entry/predecessor before first proof job.
+
+Job record (610): fresh ENTRY74673/predecessor609250 evidence bindings verified before first610 source/job. Next actual d6 call frame and distinct previous/new gd layout; no sealed source changed.
+
+Job record (610): keygen_sixth610_001 — ACCEPTED_LOCAL SixthStepEntry217,4.123s,0/0: actual d6 call/Bind after complete d5 return/guard and both352-word prior images. Next actual n16/hn8 and pinned length22/42 reads.
+
+Job record (610): keygen_sixth610_002 — ACCEPTED_LOCAL2/2,0/0: actual d6 n16/hn8 and readonly MAX_BL_SMALL3[6]=22/[7]=42 reads. Next new layout and overlapping2816-byte move from prior gd@1022.
+
+Job record (610): keygen_sixth610_003 — ACCEPTED_LOCAL2/2,0/0: actual d6 layout and overlapping2816-byte move; input fd@670/prior gd@1022 explicitly feed new fs@1342/gs@1694, while new gd@1006 differs. Both moved source images have352 words. Next link to the actual sixth caller.
+
+Job record (610): keygen_sixth610_004 — ACCEPTED_LOCAL SixthStepPrefix217,3.725s,0/0: actual d1..d5 calls, sixth Bind, original part0/part1 and both moved352-word images share one witness. Explicit gd_distinct proves previous gd@1022 differs from new gd@1006. Next audit/canonical replay then d6 body.
+
+Job record (610): keygen_sixth610_005 — ACCEPTED_LOCAL audit, six interfaces/68 standard-only axiom results,0/0. Next canonical7-module replay, pin/evidence checks and local checkpoint; then d6 body.
+
+Job record (610): canonical keygen_sixth610_canonical — ACCEPTED7/7,0/0,68 standard-only results,29.437s,maxRSS4817056KiB. Entry74673/predecessor250 unchanged; next evidence/local commit then611 d6 body.
+
+Job record (610 checkpoint): evidence PASS120 bindings; entry74673/predecessor609250 unchanged,7 accepted/68 standard-only results. Exact own11 paths; foreign work excluded, no push. Continue611 generic indexed primes and d6 body.
