@@ -1,3 +1,28 @@
+# SEED9_R1 — ACTIVE; conditional Bezout nonunit continuation checkpoint636 accepted;637 next
+
+Owner resumed 2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+636 canonical keygen_normal636_canonical accepted 5/5, clean, 12 standard-only
+axiom results, 99 evidence bindings verified. On one selected witness under
+explicit good-guard and nonunit conditions, original parts3/4/5/6 execute;
+part6 runs both actual modp_ninv31 sources and stores exact word images while
+preserving heap and array bindings. Conditions remain symbolic; no arbitrary
+input inverse law, full Bezout outcome or loop termination is claimed.
+196.648s, maxRSS3192248KiB. ENTRY74673/predecessor635159 unchanged before/after.
+Five local attempts retain one ordinary corrected uint32-conversion elaboration
+failure; no limits raised, counterexample, suppression or failed cache.
+Independent review NOT_RUN. Prior retained findings remain. Report/evidence
+KEYGEN_BEZOUT_NORMAL_217_636_REPORT.md and matching JSON; failure register
+KEYGEN_BEZOUT_NORMAL_217_FAILURES_636.json. Next637 source part7 main-loop
+entry and branch guards, then remaining Bezout/root/certificate/codec/full B1.
+No mathematical NTT/root/table/CRT/centering/Montgomery/integer law or broad
+KeyGen/Sign/compiler/security/unconditional positivity/probability.
+Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign
+unchanged. Foreign PROMPT_T14 untouched; one Lean job, -M6144 fixed; no push.
+Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; conditional Bezout unit branches checkpoint635 accepted;636 next
 
 Owner resumed 2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -12537,3 +12562,12 @@ Job record (635): keygen_unit635_001 — ACCEPTED_LOCAL diagnostic,23.301s,0/0: 
 - 635 / job `keygen_unit635_008`: ACCEPTED, clean log, 46.456 s, `Source3.BezoutUnitCopies217`; both actual source copies execute in the selected buffer geometry and produce the exact copied word images. Receipt retained; failed 007 preserved.
 - 635 / job `keygen_unit635_009`: ACCEPTED, clean log, 35.523 s, `Source3.SelectedBezoutUnitY217`; on one selected witness, if guard passes, x-unit is false and y-unit true, original parts3/4/5 and part6 return 1 with exact copied prefix images u=Y and v=masked X. Conditions remain symbolic. Receipt retained.
 - 635 / job `keygen_unit635_canonical`: ACCEPTED 8/8, clean logs; elapsed sum 346.647 s from receipts, axiom audit pending evidence verification. ENTRY and predecessor after-checks passed. Receipt retained.
+
+- 636 started: continue from local checkpoint eb79b2db; verify ENTRY and 635 evidence before any 636 source/job. No push.
+- 636 preflight: ENTRY 74673/74673 unchanged; all159 635 evidence bindings verified before source or Lean job. Logs in `.build/bezoutnormal636/`.
+- 636 / job `keygen_normal636_001`: ACCEPTED, clean log, 57.700 s, `Source3.BezoutNormalNinv217`; generic actual part6 nonunit path, both ninv31 source calls and exact stored word values, under explicit symbolic conditions and declared cells. Selected instantiation remains. Receipt retained.
+- 636 / job `keygen_normal636_002`: ACCEPTED, clean log, 43.709 s, `Source3.BezoutNormalCells217`; generic frame for declared x0i/y0i through initialization, plus actual base declarations. Receipt retained.
+- 636 / job `keygen_normal636_003`: ACCEPTED, clean log, 46.780 s, `Source3.SelectedBezoutNormalNinv217`; on one selected witness, under initial good guard and both symbolic nonunit conditions, original parts3/4/5/6 execute normally through both actual ninv31 calls. Conditions remain unevaluated. Receipt retained.
+- 636 / job `keygen_normal636_004`: FAILED, 44.716 s; retained elaboration failure: generic uint32 bindValue requires normalization of its conversion, not rfl. No counterexample; inspect existing scalar slot lemma and repair without changing limits.
+- 636 / job `keygen_normal636_005`: ACCEPTED, clean log, 39.857 s, `Source3.BezoutNormalNinvCells217`; exact x0i/y0i cell values and unchanged heap/array bindings after both calls. Failed 004 retained; existing uint32 slot lemma repairs it. Receipt retained.
+- 636 / job `keygen_normal636_canonical`: ACCEPTED 5/5, clean logs, 196.648 s; axiom audit pending evidence verification. ENTRY and predecessor after-checks passed. Receipt retained.
