@@ -1,3 +1,27 @@
+# SEED9_R1 — ACTIVE; conditional Bezout unit branches checkpoint635 accepted;636 next
+
+Owner resumed 2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+635 canonical keygen_unit635_canonical accepted 8/8, clean, 14 standard-only
+axiom results, 159 evidence bindings verified. On separate selected witnesses,
+under explicit conditions, actual parts3/4/5 and part6 return1 for x-unit or
+y-unit; y-unit also has exact u and v copied prefix word images. Neither guard
+nor unit conditions are asserted true; full output and Bezout result remain open.
+346.647s, maxRSS3052088KiB. ENTRY74673/predecessor634287 unchanged before/after.
+Nine local attempts retain one ordinary corrected identifier failure; no limits
+raised, mathematical counterexample, linter suppression or failed cache.
+Independent review NOT_RUN. Prior retained findings remain. Report/evidence
+KEYGEN_BEZOUT_UNIT_217_635_REPORT.md and matching JSON; failure register
+KEYGEN_BEZOUT_UNIT_217_FAILURES_635.json. Next636 execute original nonunit
+path and two modp_ninv31 calls, then remaining Bezout/root/certificate/codec/
+full B1. No mathematical NTT/root/table/CRT/centering/Montgomery/integer law
+or broad KeyGen/Sign/compiler/security/unconditional positivity/probability.
+Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign
+unchanged. Foreign PROMPT_T14 untouched; one Lean job, -M6144 fixed; no push.
+Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; conditional bezout initialization parts4/5 checkpoint634 accepted;635 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -12497,3 +12521,19 @@ Job record (634): keygen_upper634_017 — ACCEPTED_LOCAL audit, seven interfaces
 Job record (634): canonical keygen_upper634_canonical — ACCEPTED13/13,0/0,17 standard-only axiom results, 116.865s,maxRSS4173736KiB. Entry74673/predecessor633257 unchanged; next evidence/local commit then special-case branches.
 
 Job record (634 checkpoint): evidence PASS287 bindings,13 accepted/17 standard-only results, three retained failures including OOM; entry74673/predecessor633257 unchanged. Exact own paths only; foreign work excluded, no push. Continue635 special-case branches.
+
+Job record (635 start):634 committed2fb83ece; no push. Execute actual Bezout part6 x=1/y=1 special cases and normal continuation conditionally, without assuming selected outcome; runtime .build/bezoutunit635. Verify entry/predecessor before first proof job.
+
+Job record (635): fresh ENTRY74673 and predecessor634287 evidence bindings verified before first635 source/job. Next bind actual Bezout part6 special-case source shape.
+
+Job record (635): keygen_unit635_001 — ACCEPTED_LOCAL diagnostic,23.301s,0/0: original bezout part6 checks xlen=1/x[0]=1, then ylen=1/y[0]=1, with later ninv calls. Next source-bound unit guards.
+
+- 635 / job `keygen_unit635_002`: ACCEPTED, clean log, 31.965 s, `Source3.BezoutUnitGuard217`; proves the actual first unit-condition branch and source shape, with symbolic condition only. Receipt retained under `.build/jobs/keygen_unit635_002/RECEIPTS.json`.
+- 635 / job `keygen_unit635_003`: ACCEPTED, clean log, 30.425 s, `Source3.BezoutUnitX217`; when the symbolic x-unit condition is true, original Bezout part6 returns 1 without executing its remaining tail. Receipt retained.
+- 635 / job `keygen_unit635_004`: ACCEPTED, clean log, 24.551 s, `Source3.BezoutUnitCells217`; generic proof that both exact-length cells survive the remaining initialization. Receipt retained.
+- 635 / job `keygen_unit635_005`: ACCEPTED, clean log, 12.815 s, `Source3.SelectedBezoutUnitX217`; on one selected witness, if the initial guard passes and the symbolic x-unit condition holds, original parts3/4/5 execute and part6 returns 1. Neither condition is asserted true. Receipt retained.
+- 635 / job `keygen_unit635_006`: ACCEPTED, clean log, 34.233 s, `Source3.BezoutUnitY217`; generic actual part6 composition for x-unit false, y-unit true, conditional on the two original copy executions. The copies remain to be constructed on the selected witness. Receipt retained.
+- 635 / job `keygen_unit635_007`: FAILED, 23.714 s, retained source/log/receipt; ordinary elaboration error: nonexistent `BezoutInitZeroImages217.Gp_shape` identifier. Replacing with explicit definitional pointer equality; no mathematical counterexample.
+- 635 / job `keygen_unit635_008`: ACCEPTED, clean log, 46.456 s, `Source3.BezoutUnitCopies217`; both actual source copies execute in the selected buffer geometry and produce the exact copied word images. Receipt retained; failed 007 preserved.
+- 635 / job `keygen_unit635_009`: ACCEPTED, clean log, 35.523 s, `Source3.SelectedBezoutUnitY217`; on one selected witness, if guard passes, x-unit is false and y-unit true, original parts3/4/5 and part6 return 1 with exact copied prefix images u=Y and v=masked X. Conditions remain symbolic. Receipt retained.
+- 635 / job `keygen_unit635_canonical`: ACCEPTED 8/8, clean logs; elapsed sum 346.647 s from receipts, axiom audit pending evidence verification. ENTRY and predecessor after-checks passed. Receipt retained.
