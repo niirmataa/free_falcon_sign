@@ -1,3 +1,31 @@
+# SEED9_R1 — ACTIVE; conditional bezout initialization copies checkpoint630 accepted;631 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+630 canonical keygen_init630_canonical accepted7/7,0/0,17 standard-only axiom results, evidence verified. Under explicit selected good-guard condition, the
+original first two bezout part4 statements copy a←x at xlen and b←y at ylen.
+Actual pointer geometry, nonoverlap, source initialization, bounds and
+writability are established; both335-word inputs survive and copied prefixes
+are exact on one selected witness. Guard truth remains unknown; no unconditional
+copy reachability, full initialization or Bezout success is claimed.
+48.633s,maxRSS4502852KiB. ENTRY74673/predecessor629151 unchanged before/after.
+Twelve local attempts retain three corrected elaboration/recursion-depth
+failures; structural allocation over abstract heap fixed proof. Heartbeat,
+-M6144 and other limits unchanged; maxRecDepth262144 follows602 precedent.
+No new mathematical counterexample/memory failure/suppression/failed cache.
+Independent review NOT_RUN. Prior retained findings remain. Report/evidence
+KEYGEN_BEZOUT_INIT_COPIES_217_630_REPORT.md and matching JSON; failure register
+KEYGEN_BEZOUT_INIT_COPIES_217_FAILURES_630.json.
+Next631 remaining original Bezout initialization: length assignments,
+stores, memset and further copies; then full algorithm and actual return,
+root/certificate/codec/full B1. No mathematical NTT/root/table/CRT/centering/
+Montgomery/integer law or broad KeyGen/Sign/compiler/security/unconditional
+positivity/probability. Permanent195 bad bodyHeap/stepState UNUSED;
+Old110/measured/five do_sign unchanged. Foreign PROMPT_T14 untouched; one
+Lean job, -M6144 fixed, no push. Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; conditional bezout outcomes checkpoint629 accepted;630 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -12179,3 +12207,35 @@ Job record (629): keygen_flow629_010 — ACCEPTED_LOCAL audit, four interfaces/n
 Job record (629): canonical keygen_flow629_canonical — ACCEPTED5/5,0/0,nine standard-only axiom results, 137.19s,maxRSS4741096KiB. Entry74673/predecessor628131 unchanged; next evidence/local commit then Bezout initialization.
 
 Job record (629 checkpoint): evidence PASS151 bindings,5 accepted/nine standard-only results, four retained elaboration failures; entry74673/predecessor628131 unchanged. Exact own paths only; foreign work excluded, no push. Continue630 Bezout initialization.
+
+Job record (630 start):629 committed6ed0834a; no push. Continue original bezout initialization under good branch, starting bounded source memcpy/memory frame; runtime .build/bezoutinit630. Verify entry/predecessor before first proof job.
+
+Job record (630): fresh ENTRY74673 and predecessor629151 evidence bindings verified before first630 source/job. Next actual bounded nonoverlapping memcpy memory frame.
+
+Job record (630): keygen_init630_001 — ACCEPTED_LOCAL BezoutMemcpy217,14.160s,0/0: exact nonoverlapping byte memcpy contract from existing snapshot/move model and copied-word lemma; source bounds/initialized bytes are explicit. Next bind original initialization statements.
+
+Job record (630): keygen_init630_002 — ACCEPTED_LOCAL diagnostic,9.995s,0/0: pinned bezout part4 begins with memcpy(a,x,xlen*4), memcpy(b,y,ylen*4), then scalar and scratch initialization. Next source-call primitive for these copies.
+
+Job record (630): keygen_init630_003 — ACCEPTED_LOCAL BezoutCopySource217,5.080s,0/0: original bounded C memcpy statement executes via constructed nonoverlapping snapshot with explicit source data/domain, no assumed copy result. Next instantiate first a/x and b/y copies.
+
+Job record (630): keygen_init630_004 — ACCEPTED_LOCAL BezoutCopyFrame217,5.131s,0/0: byte snapshot preserves outside reads and transports copied words. Next original first two Bezout memcpy statements at actual geometry.
+
+Job record (630): keygen_init630_005 — RETAINED elaboration/recursion-depth failure,13.399s: five concrete pointer offset changes did not reduce, allocation goals overexpanded, and execution inversion lacked intermediate equality. Raw snapshot/log retained; inspect pointer shapes and factor source runs directly.
+
+Job record (630): keygen_init630_006 — ACCEPTED_LOCAL diagnostic,11.197s: exact source pointer geometry a2010, b2345, x670, y1005 confirmed. Next factor copy runs and concrete shapes.
+
+Job record (630): keygen_init630_007 — RETAINED recursion-depth failure,39.207s: direct allocation changes unfolded nested snapshot state despite explicit pointer shapes; two copy-run exports and offset proofs otherwise elaborated. Raw snapshot/log retained; isolate allocation over abstract heap.
+
+Job record (630): keygen_init630_008 — RETAINED recursion-depth failure,21.910s: abstract allocation helper still reduced large literal arithmetic during tuple elaboration. Raw snapshot/log retained; rewrite zero-offset structurally before applying extent.
+
+Job record (630): keygen_init630_009 — ACCEPTED_LOCAL BezoutInitCopies217,10.493s,0/0: original two initialization memcpy statements execute for bounded source images and preserve x/y while producing copied a/b images at actual geometry. Next selected good-branch instantiation.
+
+Job record (630): keygen_init630_010 — ACCEPTED_LOCAL BezoutLengthCells217,15.561s,0/0: generic exact-length cell and heap-frame facts for any word images. Next selected good-branch first-copy instantiation.
+
+Job record (630): keygen_init630_011 — ACCEPTED_LOCAL SelectedBezoutInitCopies217,6.283s,0/0: under explicit good-guard condition, actual selected state executes original a←x and b←y copies, preserving both input images and exporting bounded a/b copies on same witness. No guard truth asserted. Next audit/canonical replay.
+
+Job record (630): keygen_init630_012 — ACCEPTED_LOCAL audit, four interfaces/17 axiom results,0/0. Next canonical seven-module replay, pin recheck and evidence.
+
+Job record (630): canonical keygen_init630_canonical — ACCEPTED7/7,0/0,17 standard-only axiom results, 48.633s,maxRSS4502852KiB. Entry74673/predecessor629151 unchanged; next evidence/local commit then remaining initialization.
+
+Job record (630 checkpoint): evidence PASS186 bindings,7 accepted/17 standard-only results, three retained failures; entry74673/predecessor629151 unchanged. Exact own paths include diagnostic sources; foreign work excluded, no push. Continue631 remaining initialization.

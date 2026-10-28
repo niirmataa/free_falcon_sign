@@ -1,0 +1,367 @@
+{
+  "utc": "2026-10-28T10:33:35.020117+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Under the explicit selected good-guard condition, execute original Bezout part4 first two memcpy statements a\u2190x and b\u2190y at symbolic exact lengths, preserve both input images and export both copied prefixes on the same witness.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/bezoutinit630/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/bezoutinit630/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/bezoutinit630/predecessor_before.log",
+      "sha256": "bdf7e2b99913d02fd1dc0c899ca344d5ee3ccb43a1f6fd64af410adb19c5383d"
+    },
+    {
+      "path": ".build/bezoutinit630/predecessor_after.log",
+      "sha256": "bdf7e2b99913d02fd1dc0c899ca344d5ee3ccb43a1f6fd64af410adb19c5383d"
+    },
+    {
+      "path": ".build/bezoutinit630/entry_reverify_630.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/bezoutinit630/predecessor_verify.py",
+      "sha256": "58533507888608ed458763239d402c988f9f543e60062fba74c4c41b05c8ac59"
+    },
+    {
+      "path": ".build/bezoutinit630/modules.json",
+      "sha256": "9dc45bb338e20247dc792f317bb1a244bb9ec2a28b10e5345ffd20a86d3d1ea9"
+    },
+    {
+      "path": "formal/Source3/BezoutInitInspect217.lean",
+      "sha256": "f51341fc4553465371cc3c887cb56d183e5e3f5af021ffaec68e2c078503811e"
+    },
+    {
+      "path": "formal/Source3/BezoutPointerInspect217.lean",
+      "sha256": "bdd34a831745c42da4fa9df6dc95c89d5d2ca2872f342db9ee00b817628b4699"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_BEZOUT_OUTCOME_217_629.json",
+    "sha256": "c818028a93f0b2093dd89706137e1282005d12f2dd3979c52f9e8dff4ae78ea8"
+  },
+  "predecessor_bindings_verified": 151,
+  "job": "keygen_init630_canonical",
+  "accepted": 7,
+  "receipts": {
+    "path": ".build/jobs/keygen_init630_canonical/RECEIPTS.json",
+    "sha256": "de9863318eef2a359d7fa85c9c0b74187f9c3c6b649348e6905c1c61fcc8c293"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_init630_canonical/SOURCE_INPUTS.json",
+    "sha256": "805810d1e74a4a45df5e983d0ce8aa4204b1868201b88c5298f1e67eefabfe30"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_init630_canonical/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_init630_canonical/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_init630_canonical/PREFLIGHT.json",
+    "sha256": "7716b49ccbdab1a1fb0fdc335abde02f7307baf2a758f2b67e80728fc574b80a"
+  },
+  "modules": [
+    {
+      "module": "Source3.BezoutMemcpy217",
+      "source": {
+        "path": "formal/Source3/BezoutMemcpy217.lean",
+        "sha256": "dca8d87d76c6ea2729f6f090724f1ebfb12951fab19fc53accee094c07cfaed7"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_init630_canonical/formal/Source3/BezoutMemcpy217.lean",
+        "sha256": "dca8d87d76c6ea2729f6f090724f1ebfb12951fab19fc53accee094c07cfaed7"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_init630_canonical/lib/Source3/BezoutMemcpy217.olean",
+        "sha256": "43cf439f04ab086039bb96d3d7774475365ac7c3ea96f89cef68dfdb22078291"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_BezoutMemcpy217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_BezoutMemcpy217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 18.056,
+      "maxrss_kib": 4187824
+    },
+    {
+      "module": "Source3.BezoutCopySource217",
+      "source": {
+        "path": "formal/Source3/BezoutCopySource217.lean",
+        "sha256": "0b4b36308356902107cbc34fe33a275514efd9c2b1089d49ee7be1404ff537ab"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_init630_canonical/formal/Source3/BezoutCopySource217.lean",
+        "sha256": "0b4b36308356902107cbc34fe33a275514efd9c2b1089d49ee7be1404ff537ab"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_init630_canonical/lib/Source3/BezoutCopySource217.olean",
+        "sha256": "8514c6f710af6ff1b611c4759ddcae6354a0bffd7700df99476961a5601fcc55"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_BezoutCopySource217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_BezoutCopySource217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.828,
+      "maxrss_kib": 4237880
+    },
+    {
+      "module": "Source3.BezoutCopyFrame217",
+      "source": {
+        "path": "formal/Source3/BezoutCopyFrame217.lean",
+        "sha256": "90ce0b32def7fa63f8c73d9b618be7e9b10b0b4f3edd8f4901f18fdafb594263"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_init630_canonical/formal/Source3/BezoutCopyFrame217.lean",
+        "sha256": "90ce0b32def7fa63f8c73d9b618be7e9b10b0b4f3edd8f4901f18fdafb594263"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_init630_canonical/lib/Source3/BezoutCopyFrame217.olean",
+        "sha256": "d675a2b8f59c2159aa25af1c6bb47d02497bbaa4960e61b92f4040102e15da59"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_BezoutCopyFrame217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_BezoutCopyFrame217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 5.125,
+      "maxrss_kib": 4237880
+    },
+    {
+      "module": "Source3.BezoutInitCopies217",
+      "source": {
+        "path": "formal/Source3/BezoutInitCopies217.lean",
+        "sha256": "dc0ab3d0a3e83b39ede457f9d45b754c4743788b025d744fd0beadf21b8c87a6"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_init630_canonical/formal/Source3/BezoutInitCopies217.lean",
+        "sha256": "dc0ab3d0a3e83b39ede457f9d45b754c4743788b025d744fd0beadf21b8c87a6"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_init630_canonical/lib/Source3/BezoutInitCopies217.olean",
+        "sha256": "3f4332bf183e3b51864e865b20b1c2b44169d48a991399ecea43544239635bdb"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_BezoutInitCopies217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_BezoutInitCopies217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 10.944,
+      "maxrss_kib": 4502852
+    },
+    {
+      "module": "Source3.BezoutLengthCells217",
+      "source": {
+        "path": "formal/Source3/BezoutLengthCells217.lean",
+        "sha256": "b7a4579fd4b3f89b752787d76d749a1eae77d9511de9160e24101f0a669f7ca0"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_init630_canonical/formal/Source3/BezoutLengthCells217.lean",
+        "sha256": "b7a4579fd4b3f89b752787d76d749a1eae77d9511de9160e24101f0a669f7ca0"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_init630_canonical/lib/Source3/BezoutLengthCells217.olean",
+        "sha256": "a561d4d85ebac20d6ddc9abba95e236d2fff87cfa6184faabca87393e12ef037"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_BezoutLengthCells217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_BezoutLengthCells217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.026,
+      "maxrss_kib": 4502852
+    },
+    {
+      "module": "Source3.SelectedBezoutInitCopies217",
+      "source": {
+        "path": "formal/Source3/SelectedBezoutInitCopies217.lean",
+        "sha256": "196899fd641fe0188b11e1225c9529dc07fd59c2fa06947f1ab8bef85e004f6d"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_init630_canonical/formal/Source3/SelectedBezoutInitCopies217.lean",
+        "sha256": "196899fd641fe0188b11e1225c9529dc07fd59c2fa06947f1ab8bef85e004f6d"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_init630_canonical/lib/Source3/SelectedBezoutInitCopies217.olean",
+        "sha256": "254fff38f0ec28d0bfdfc768435e2c4da2cfe05ad3e448a6c656de3f3c117151"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_SelectedBezoutInitCopies217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_SelectedBezoutInitCopies217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.074,
+      "maxrss_kib": 4502852
+    },
+    {
+      "module": "Source3.SelectedBezoutInitCopiesAudit217",
+      "source": {
+        "path": "formal/Source3/SelectedBezoutInitCopiesAudit217.lean",
+        "sha256": "f64d77b28f96d7fb92c312223812cca379b15e80bb1a280fc4ed2d9b593565e1"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_init630_canonical/formal/Source3/SelectedBezoutInitCopiesAudit217.lean",
+        "sha256": "f64d77b28f96d7fb92c312223812cca379b15e80bb1a280fc4ed2d9b593565e1"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_init630_canonical/lib/Source3/SelectedBezoutInitCopiesAudit217.olean",
+        "sha256": "f21d49ea921843fe748fca133576bba91d702a8f64a63e18e693bb6b609b9ff3"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_SelectedBezoutInitCopiesAudit217.stdout",
+        "sha256": "d971b82b365874debfc1eb2c49b4a8f50c8089a5820ee9f0624328287f576e83"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_init630_canonical/logs/Source3_SelectedBezoutInitCopiesAudit217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 2.58,
+      "maxrss_kib": 4502852
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.BezoutMemcpy217.memcpy_of_move": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutMemcpy217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutMemcpy217.copied_word": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutCopySource217.count_eval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutCopySource217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutCopyFrame217.outside": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutCopyFrame217.copied": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutInitCopies217.a_shape": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutInitCopies217.b_shape": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutInitCopies217.shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutInitCopies217.allocated_at": [
+      "propext"
+    ],
+    "FT1536.Source3.BezoutInitCopies217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutInitCopies217.continue_part": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutLengthCells217.xcell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutLengthCells217.ycell": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutLengthCells217.heap": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SelectedBezoutInitCopies217.selected": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_BEZOUT_INIT_COPIES_217_FAILURES_630.json",
+    "sha256": "9d925bcc3ae4bc39c747d0b23fb4c1b96c5c4d889e3d147181b4afcbecbf9d41"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_BEZOUT_INIT_COPIES_217_630_REPORT.md",
+    "sha256": "6dbc595109f47433c13878b92007a7596a33b1a2f380d786d678eaaf00a1574f"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/bezoutinit630/evidence_config.json",
+    "sha256": "ef1dd32e20eb4dbbc420bb323ac8ff2f4f94f4dbb3edcf0d967552f7b2476f42"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 631,
+  "next_obligations": [
+    "Execute remaining original Bezout initialization (length assignments, stores, memset/memcpy) under good guard",
+    "Continue full Bezout source and derive actual return or selected guard outcome, then root/certificate/codec/full B1"
+  ],
+  "not_claimed": [
+    "Selected guard truth, complete Bezout initialization or normal-branch result",
+    "Mathematical NTT/root/table/CRT/centering/Montgomery/integer laws",
+    "Full KeyGen/Sign/compiler/security/unconditional positivity/probability",
+    "Independent review"
+  ]
+}
