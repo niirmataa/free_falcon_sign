@@ -1,3 +1,28 @@
+# SEED9_R1 — ACTIVE; selected d8 first-prime loop checkpoint617 accepted;618 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+617 canonical keygen_eighth617_canonical accepted16/16,0/0,97 standard-only axiom results, evidence verified. Actual selected d8 first-prime loop u0..81 at n4/hn2,
+slen82/tlen166; original prefix/generator/copy/products/inverse and exit.
+One inductive witness retains each row's table,82 fd/gd product columns and
+both328-word inverse images at gd1002. Actual caller/prefix derived from
+completed d1..d7; no desired run/output premise.
+47.938s,maxRSS4270904KiB. ENTRY74673/predecessor616132 unchanged before/after.
+Twelve local attempts retain two elaboration failures, corrected: wrong pair
+projections and missing earlier table witnesses. No new mathematical
+counterexample/resource failure/suppression/failed cache. Independent
+review NOT_RUN. Prior retained findings remain. Report/evidence
+KEYGEN_EIGHTH_FIRST_217_617_REPORT.md and matching JSON; failure register
+KEYGEN_EIGHTH_FIRST_217_FAILURES_617.json.
+Next618 actual d8 CRT pair, extra-prime loop u82..165 and whole d8 return;
+then d9/root/certificate/codec/full B1. No mathematical NTT/root/table/
+CRT/centering/Montgomery/integer law or broad KeyGen/Sign/compiler/security/
+unconditional positivity/probability. Permanent195 bad bodyHeap/stepState
+UNUSED; Old110/measured/five do_sign unchanged. Foreign PROMPT_T14 untouched;
+one Lean job, -M6144 fixed; no push. Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected d8 prefix checkpoint616 accepted;617 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11489,3 +11514,35 @@ Job record (616): keygen_eighth616_007 — ACCEPTED_LOCAL audit, six interfaces/
 Job record (616): canonical keygen_eighth616_canonical — ACCEPTED7/7,0/0,68 standard-only axiom results, 48.323s,maxRSS4438932KiB. Entry74673/predecessor615260 unchanged; next evidence and local commit.
 
 Job record (616 checkpoint): evidence PASS132 bindings,7 accepted/68 standard-only results, zero failed local attempts; entry74673 and predecessor615260 unchanged. Exact own paths only; foreign work excluded, no push. Continue617 d8 first-prime loop.
+
+Job record (617 start):616 committed3a0d417b; no push. Continue actual d8 first-prime loop u0..81; runtime .build/eighthfirst617. Verify entry/predecessor before first proof job.
+
+Job record (617): fresh ENTRY74673 and predecessor616132 evidence bindings verified before first617 source/job. Next d8 first-prime generator and source product.
+
+Job record (617): keygen_eighth617_001 — RETAINED elaboration failure,16.683s, exit1: numeric adaptation changed two pair projections from .2 to .1, selecting gm instead of igm; no mathematical counterexample. Raw source snapshot/log retained; restore projections and retry.
+
+Job record (617): keygen_eighth617_002 — ACCEPTED_LOCAL EighthStepGenerator217,7.742s,0/0: original d8 row state and Level1 logn2 generator using slen82 and4-word tables; projections corrected. Next source product and geometry.
+
+Job record (617): keygen_eighth617_003 — ACCEPTED_LOCAL EighthStepProduct217,3.733s,0/0: original d8 fd/gd product loop for stride166 and hn2, exact word images at root gd1002. Next geometric separation.
+
+Job record (617): keygen_eighth617_004 — ACCEPTED_LOCAL EighthStepGeometry217,3.072s,0/0: d8 copy/product separation geometry. Next source copy and inverse columns.
+
+Job record (617): keygen_eighth617_005 — ACCEPTED_LOCAL2/2,0/0: original d8 copy and Level1 inverse sides on stride82. Next both-side composition, row prefix and complete iteration.
+
+Job record (617): keygen_eighth617_006 — ACCEPTED_LOCAL4/4,0/0: d8 first-prime source prefix, both-side copy/product/inverse composition and single inner iteration. Next first-loop invariant.
+
+Job record (617): keygen_eighth617_007 — ACCEPTED_LOCAL EighthStepLoopBase217,10.838s,0/0: pinned prime rows, counter and preservation of separate earlier columns. Next invariant and 82-iteration loop.
+
+Job record (617): keygen_eighth617_008 — ACCEPTED_LOCAL3/3,0/0: inductive d8 first-prime loop u0..81, all earlier product columns retained, both328-word inverse row images. Next bind actual caller/prefix.
+
+Job record (617): keygen_eighth617_009 — ACCEPTED_LOCAL EighthStepContext217,2.770s,0/0: initial d8 loop context, actual static objects, readonly tables and allocation derived from source prefix. Next link actual preceding runs and loop.
+
+Job record (617): keygen_eighth617_010 — RETAINED elaboration failure,3.172s, exit1: first-loop export omitted two previous d7 table witnesses, shifting binders and leaving fWords partially applied; no mathematical counterexample. Raw snapshot/log retained; correct witnesses and retry.
+
+Job record (617): keygen_eighth617_011 — ACCEPTED_LOCAL EighthStepFirst217,4.585s,0/0: actual d8 caller/prefix and counted first-prime loop u0..81 share one output with indexed rows,82 fd/gd columns and both328-word inverse images. Next full audit and canonical replay.
+
+Job record (617): keygen_eighth617_012 — ACCEPTED_LOCAL audit, six public interfaces/97 axiom results,0/0. Next canonical16-module replay, pin recheck and evidence.
+
+Job record (617): canonical keygen_eighth617_canonical — ACCEPTED16/16,0/0,97 standard-only axiom results, 47.938s,maxRSS4270904KiB. Entry74673/predecessor616132 unchanged; next evidence/local commit then d8 CRT.
+
+Job record (617 checkpoint): evidence PASS260 bindings,16 accepted/97 standard-only results, two retained elaboration failures; entry74673/predecessor616132 unchanged. Exact own paths only; foreign work excluded, no push. Continue618 d8 CRT.
