@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; complete selected d7 return checkpoint615 accepted;616 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+615 canonical keygen_seventh615_canonical accepted16/16,0/0,104 standard-only axiom results, evidence verified. Actual selected d7 full body: 42-limb CRT fs/gs
+pair, extra-prime loop u42..81, all82 fd/gd columns and both328-word flat
+images at one output; actual seventh call/return, d7→8 increment and true
+next guard. Original source/earlier calls constructed, no desired output/
+run premise; exact executed-word formulas only.
+101.412s,maxRSS5825592KiB. ENTRY74673/predecessor614251 unchanged before/after.
+Twelve local attempts retain two elaboration failures, corrected; no new
+counterexample/resource failure/suppression/failed cache. Unsealed copied d6
+comment corrected before canonical rebuild. Independent review NOT_RUN.
+Prior retained findings remain. Report/evidence KEYGEN_SEVENTH_RETURN_
+217_615_REPORT.md and matching JSON; failure register KEYGEN_SEVENTH_RETURN_
+217_FAILURES_615.json.
+Next616 actual d8 entry/layout/move, then d8..9/root/certificate/codec/full B1.
+Verify old source/new destination roots as output size grows. No mathematical
+CRT/NTT/root/table/centering/Montgomery/integer law or broad KeyGen/Sign/
+compiler/security/unconditional positivity/probability. Permanent195 bad
+bodyHeap/stepState UNUSED; Old110/measured/five do_sign unchanged. Foreign
+PROMPT_T14 untouched; one Lean process, -M6144 and fixed limits, exact local
+commits, no push. Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected d7 first-prime loop checkpoint614 accepted;615 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11385,3 +11411,35 @@ Documentation supplement (614): sealed FourthStepCrt216/FifthStepCrt217/SixthSte
 Job record (614): canonical keygen_seventh614_canonical — ACCEPTED16/16,0/0,97 standard-only axiom results, 50.002s,maxRSS3723160KiB. Entry74673/predecessor613142 unchanged; next evidence/local commit then d7 CRT.
 
 Job record (614 checkpoint): evidence PASS251 bindings,16 accepted/97 standard-only results, one retained audit failure; entry74673/predecessor613142 unchanged. Exact own paths including documentation supplement; foreign work excluded, no push. Continue615 d7 CRT.
+
+Job record (615 start):614 committed4020569e; no push. Continue actual d7 CRT pair, extra-prime u42..81 and caller return; runtime .build/seventhcrt615. Verify entry/predecessor before first proof job.
+
+Job record (615): fresh ENTRY74673 and predecessor614251 evidence bindings verified before first615 source/job. Next actual d7 rebuild_CRT body.
+
+Job record (615): keygen_seventh615_001 — ACCEPTED_LOCAL SeventhStepCrtBody217,3.072s,0/0: actual rebuild_CRT callee at num8/xlen=xstride42, indexed pinned rows, source tmp[0] store, co-loop and signed normalization over336 words. Next actual fs/gs call pair.
+
+Job record (615): keygen_seventh615_002 — ACCEPTED_LOCAL SeventhStepCrt217,3.673s,0/0: original d7 fs/gs rebuild_CRT calls and preserved separate images/static objects. Next extra-prime prefix and side engines.
+
+Job record (615): keygen_seventh615_003 — ACCEPTED_LOCAL2/2,0/0: extra-prime source prefix Rx(slen42), signed-store and Level2 forward/product side engines. Next both-side iteration and CRT column preservation.
+
+Job record (615): keygen_seventh615_004 — ACCEPTED_LOCAL2/2,0/0: actual both-side extra-prime walks/forward/products and generic row iteration for u<82, with same-output products. Next preserve first-loop columns through CRT.
+
+Job record (615): keygen_seventh615_005 — ACCEPTED_LOCAL2/2,0/0: actual selected d7 prefix+first loop+CRT, both reassembled336-word images and all42 first product columns survive part3 on one output. Next extra-prime loop u42..81.
+
+Job record (615): keygen_seventh615_006 — ACCEPTED_LOCAL4/4,0/0: actual extra-prime loop u42..81 through false u<82 exit, preserving all first/extra columns and same-witness source-indexed tables/static objects. Next associate complete d7 source body.
+
+Job record (615): keygen_seventh615_007 — ACCEPTED_LOCAL SeventhStepFull217,3.622s,0/0: actual selected complete d7 body, first and extra columns on the same execution witness. Next export328-word sections and caller return.
+
+Job record (615): keygen_seventh615_008 — RETAINED elaboration failure,3.373s, exit1: image export supplied prior run6 instead of actual run7 in witness conjunction; no mathematical counterexample. Source snapshot/log retained; correct witness and retry.
+
+Job record (615): keygen_seventh615_009 — ACCEPTED_LOCAL SeventhStepImage217,3.372s,0/0: gather 82 columns per side into both328-word sections from the same actual d7 source run. Next caller return and d8 guard.
+
+Job record (615): keygen_seventh615_010 — RETAINED elaboration failure,3.375s, exit1: duplicated sixth caller argument in returned-state definition cascaded into type errors; no mathematical counterexample. Raw source snapshot/log retained; correct argument and retry.
+
+Job record (615): keygen_seventh615_011 — ACCEPTED_LOCAL SeventhStepReturn217,3.672s,0/0: actual seventh caller return, both328-word output sections and d7-to-d8 increment/true guard, on the same selected execution. Next audit and canonical replay.
+
+Job record (615): keygen_seventh615_012 — ACCEPTED_LOCAL audit, seven interfaces/104 axiom results,0/0. One unsealed CRT-body comment still says d=6; fix to d=7 and rebuild all dependents in canonical replay.
+
+Job record (615): canonical keygen_seventh615_canonical — ACCEPTED16/16,0/0,104 standard-only axiom results, 101.412s,maxRSS5825592KiB. Entry74673/predecessor614251 unchanged; next evidence/local commit then d8 prefix.
+
+Job record (615 checkpoint): evidence PASS260 bindings,16 accepted/104 standard-only results, two retained elaboration failures; entry74673/predecessor614251 unchanged. Exact own paths only; foreign work excluded, no push. Continue616 d8 prefix.
