@@ -1,3 +1,27 @@
+# SEED9_R1 — ACTIVE; selected d4 prefix checkpoint604 accepted;605 next
+
+Owner resumed2026-10-28; continue in source3, no push/subagents/reviewers/
+relay/migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+604 canonical keygen_fourth604_canonical accepted7/7,0/0,68 standard-only
+axiom results. Actual d4 call entry after d3 return, original declarations
+and prefix, n64/hn32, pinned MAX_BL_SMALL3 lengths6/12, true pointer layout
+and overlapping 3072-byte move; both384-word fs/gs images at one output.
+35.229s,maxRSS4852712KiB. ENTRY74673/predecessor603206 unchanged before/after.
+5 Lean attempts accepted,0 failures; one invalid shell working directory
+was rejected before a process/job was created. No source/output premise,
+resource failure, suppression or failed cache. Independent review NOT_RUN.
+Report/evidence KEYGEN_FOURTH_PREFIX_216_604_REPORT.md and matching JSON;
+retained register KEYGEN_FOURTH_PREFIX_216_FAILURES_604.json.
+Next605: actual d4 first-prime generator/copy/product/inverse loops; then
+CRT, additional primes, complete d4 return, later d5..9/root/certificate/
+codec/full B1. No mathematical NTT/root/table/CRT/centering/Montgomery/
+integer law or broad KeyGen/Sign/compiler/security/unconditional
+positivity/probability. Permanent195 bad bodyHeap/stepState unused;
+Old110/measured/five do_sign unchanged. Foreign PROMPT_T14 untouched.
+One Lean process, -M6144 and limits unchanged; exact local commits, no push.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; complete selected d3 return checkpoint603 accepted;604 next
 
 Owner resumed2026-10-28; continue source3 in the same session, no push,
@@ -10793,3 +10817,21 @@ Job record (603): keygen_body603_012 — ACCEPTED_LOCAL ThirdStepReturnAudit216,
 Job record (603): canonical keygen_body603_canonical — ACCEPTED10/10,0/0,22 standard-only results,55.675s,maxRSS5617552KiB. Entry74673 and predecessor602 9993 checks unchanged; next evidence/local commit then604.
 
 Job record (603 checkpoint): evidence PASS206 bindings; entry74673 and predecessor602 9993 hash checks unchanged,10 accepted/22 standard-only results. Exact own14 paths; foreign work excluded, no push. Continue604 actual d4 entry/layout/move.
+
+Job record (604 start):603 committed9ceac152adf3d4d9e6b768c7bd89c1d4deaa953d; no push. Next actual d4 entry, length6/12, layout and move from the actual d3 caller return, runtime .build/fourth604. Verify entry/predecessor before first604 proof job.
+
+Job record (604): fresh ENTRY74673 and predecessor603 206 evidence bindings verified before first604 source/job. Next actual d4 call frame and same-output d3 return images; no prior source modified.
+
+Job record (604): keygen_fourth604_001 — ACCEPTED_LOCAL FourthStepEntry216,22.260s,0/0: actual d4 call Bind (logn6,depth4,ter/in/out1), derived from the constructed d3 return/guard with both384-word arrays at the same caller. Next actual n64/hn32 and source MAX_BL_SMALL3 lengths6/12.
+
+Job record (604): keygen_fourth604_002 — ACCEPTED_LOCAL2/2,0/0: original d4 n=64/hn=32 and actual MAX_BL_SMALL3 depth4/depth5 reads slen6/tlen12, including indexed read from pinned readonly source table. Next actual layout and overlapping memmove.
+
+Job record (604): keygen_fourth604_003 — ACCEPTED_LOCAL2/2,0/0: original d4 pointer layout and overlapping 3072-byte memmove, both exact384-word source images. Scratch roots: fd670/gd1054/fs1438/gs1822/gm2206/igm2270/t12334. Next link the original declarations/choice/move prefix to the actual d3 return.
+
+Job record (604): keygen_fourth604_004 — ACCEPTED_LOCAL FourthStepPrefix216,3.977s,0/0: actual d1/d2/d3 executions, fourth call Bind, original part0/part1, and both exact384-word moved source arrays on one output, with no assumed execution/output. Next axiom audit/canonical replay and local checkpoint, then d4 body.
+
+Job record (604): keygen_fourth604_005 — ACCEPTED_LOCAL audit, five checked interfaces/68 standard-only axiom results,0/0. Next canonical7-module replay, final pin/evidence checks and local checkpoint; then d4 prime/product loops.
+
+Job record (604): canonical keygen_fourth604_canonical — ACCEPTED7/7,0/0,68 standard-only results,35.229s,maxRSS4852712KiB. Entry74673/predecessor206 unchanged; next evidence/local commit, then605 d4 body.
+
+Job record (604 checkpoint): evidence PASS120 bindings; entry74673/predecessor603206 unchanged,7 accepted/68 standard-only results. Exact own11 paths; foreign work excluded, no push. Continue605 actual d4 body.
