@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; selected bezout entry/prefix checkpoint626 accepted;627 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+626 canonical keygen_bezout626_canonical accepted5/5,0/0,15 standard-only axiom results, evidence verified. Actual selected CRT outputs bind to original deepest
+zint_bezout x/y, u/v/len/tmp; callee parts0/1 execute declarations and six
+working-pointer setups and preserve both reconstructed335-word inputs on the
+same witness. No desired run/output premise. Actual exact-length calls,
+data-dependent checks, full Bezout body and success/failure remain open.
+30.26s,maxRSS4843780KiB. ENTRY74673/predecessor625128 unchanged before/after.
+Nine local attempts retain three corrected failures: helper namespace,
+heartbeat timeout, reserved identifier; fixed limits unchanged. No new
+counterexample/memory failure/suppression/failed cache. Independent review
+NOT_RUN. Prior retained findings remain. Report/evidence
+KEYGEN_BEZOUT_PREFIX_217_626_REPORT.md and matching JSON; failure register
+KEYGEN_BEZOUT_PREFIX_217_FAILURES_626.json.
+Next627 actual zint_exact_length calls on both reconstructed inputs and
+initial data-dependent guards; continue full Bezout source and derive actual
+return, root/certificate/codec/full B1. No mathematical NTT/root/table/CRT/
+centering/Montgomery/integer law or broad KeyGen/Sign/compiler/security/
+unconditional positivity/probability. Permanent195 bad bodyHeap/stepState
+UNUSED; Old110/measured/five do_sign unchanged; foreign PROMPT_T14 untouched.
+One Lean job, -M6144 fixed, no push. Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected deepest unsigned CRT checkpoint625 accepted;626 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11945,3 +11971,29 @@ Job record (625): keygen_deepcrt625_008 — ACCEPTED_LOCAL audit, four interface
 Job record (625): canonical keygen_deepcrt625_canonical — ACCEPTED5/5,0/0,20 standard-only axiom results, 50.0s,maxRSS5310916KiB. Entry74673/predecessor62474 unchanged; next evidence/local commit then bezout.
 
 Job record (625 checkpoint): evidence PASS128 bindings,5 accepted/20 standard-only results, zero failed Lean attempts, one retained runner preflight failure; entry74673/predecessor62474 unchanged. Exact own paths include diagnostic source and documentation supplement; foreign work excluded, no push. Continue626 bezout.
+
+Job record (626 start):625 committed5850a7c9; no push. Continue actual zint_bezout source/call branch on selected reconstructed fp/gp without assuming result; runtime .build/bezout626. Verify entry/predecessor before first proof job.
+
+Job record (626): fresh ENTRY74673 and predecessor625128 evidence bindings verified before first626 source/job. Next bind actual selected reconstructed fp/gp to original bezout entry, without assuming its result.
+
+Job record (626): keygen_bezout626_001 — ACCEPTED_LOCAL DeepestBezoutEntry217,7.788s,0/0: actual selected deepest CRT output splits into x/y images, with exact u/v/x/y/len/tmp binding to original bezout call. No bezout result assumed. Next source initialization.
+
+Job record (626): keygen_bezout626_002 — ACCEPTED_LOCAL diagnostic,3.023s,0/0: pinned bezout part0 declares six pointers and seven scalar cells; part1 binds u0/v0/u1/v1/a/b before exact-length calls. Next prove actual declarations and pointer setup.
+
+Job record (626): keygen_bezout626_003 — RETAINED elaboration failure,6.691s, exit1: declaration builder referenced a helper under wrong namespace; source-shape decision then could not reduce. Raw source/log retained; correct helper namespace and retry.
+
+Job record (626): keygen_bezout626_004 — ACCEPTED_LOCAL BezoutDeclarations217,6.480s,0/0: actual bezout callee part0 declares six pointers and scalar cells, preserving heap/tables. Next bind source working pointers.
+
+Job record (626): keygen_bezout626_005 — RETAINED heartbeat timeout,97.385s, exit1: direct rfl on full nested selected-entry heap overexpanded at fixed 2000000 heartbeats. Raw snapshot/log retained; use compositional heap equality without increasing limits.
+
+Job record (626): keygen_bezout626_006 — ACCEPTED_LOCAL BezoutPointerSetup217,12.940s,0/0: original bezout part1 binds u0/v0/u1/v1/a/b to selected work buffers; structural heap proof stays within fixed heartbeat budget. Next compose with selected entry and input images.
+
+Job record (626): keygen_bezout626_007 — RETAINED parse failure,2.723s, exit1: local identifier prefix is a Lean keyword. Raw snapshot/log retained; rename identifier and retry.
+
+Job record (626): keygen_bezout626_008 — ACCEPTED_LOCAL SelectedBezoutPrefix217,2.922s,0/0: actual selected CRT result binds original bezout call; source parts0/1 declarations and working pointers execute on selected state and preserve both reconstructed input images. Next audit/canonical replay.
+
+Job record (626): keygen_bezout626_009 — ACCEPTED_LOCAL audit, four interfaces/15 axiom results,0/0. Next canonical five-module replay, pin recheck and evidence.
+
+Job record (626): canonical keygen_bezout626_canonical — ACCEPTED5/5,0/0,15 standard-only axiom results, 30.26s,maxRSS4843780KiB. Entry74673/predecessor625128 unchanged; next evidence/local commit then exact lengths.
+
+Job record (626 checkpoint): evidence PASS142 bindings,5 accepted/15 standard-only results, three retained failures; entry74673/predecessor625128 unchanged. Exact own paths include diagnostic source; foreign work excluded, no push. Continue627 exact-length calls.
