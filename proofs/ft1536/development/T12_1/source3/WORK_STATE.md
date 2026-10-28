@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; conditional bezout outcomes checkpoint629 accepted;630 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+629 canonical keygen_flow629_canonical accepted5/5,0/0,nine standard-only axiom results, evidence verified. On the same selected witness: if symbolic initial
+bezout guard is true, the original full callee and deepest source return0
+and actual root search rejects; if false, original guard continues normally
+and both lengths and low-bit conjunction are nonzero. Input images remain.
+The guard itself is not evaluated; neither actual failure nor success is
+asserted. Full normal-branch Bezout, root and B1 remain open.
+137.19s,maxRSS4741096KiB. ENTRY74673/predecessor628131 unchanged before/after.
+Ten local attempts retain four corrected elaboration failures; fixed limits
+unchanged. No new mathematical counterexample/resource failure/suppression/
+failed cache. Independent review NOT_RUN. Prior retained findings remain.
+Report/evidence KEYGEN_BEZOUT_OUTCOME_217_629_REPORT.md and matching JSON;
+failure register KEYGEN_BEZOUT_OUTCOME_217_FAILURES_629.json.
+Next630 execute original Bezout initialization and remaining body under good
+branch, or derive selected guard value; then root/certificate/codec/full B1.
+No mathematical NTT/root/table/CRT/centering/Montgomery/integer law or broad
+KeyGen/Sign/compiler/security/unconditional positivity/probability.
+Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign
+unchanged. Foreign PROMPT_T14 untouched; one Lean job, -M6144 fixed; no push.
+Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected bezout initial guard checkpoint628 accepted;629 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -12125,3 +12151,31 @@ Job record (628): keygen_guard628_008 — ACCEPTED_LOCAL audit, four interfaces/
 Job record (628): canonical keygen_guard628_canonical — ACCEPTED5/5,0/0,10 standard-only axiom results, 21.604s,maxRSS4450464KiB. Entry74673/predecessor627307 unchanged; next evidence/local commit then Bezout continuation.
 
 Job record (628 checkpoint): evidence PASS131 bindings,5 accepted/10 standard-only results, two retained failures; entry74673/predecessor627307 unchanged. Exact own paths only; foreign work excluded, no push. Continue629 Bezout continuation.
+
+Job record (629 start):628 committed259710d0; no push. Derive source-level consequences of the selected symbolic bezout initial guard, including actual early return when bad, and continue normal branch without assuming outcome; runtime .build/bezoutflow629. Verify entry/predecessor before first proof job.
+
+Job record (629): fresh ENTRY74673 and predecessor628131 evidence bindings verified before first629 source/job. Next derive actual source early-return consequence conditionally on selected bad Boolean, without asserting its value.
+
+Job record (629): keygen_flow629_001 — ACCEPTED_LOCAL BezoutEarlyReturn217,15.407s,0/0: when initial guard returns0, actual entire pinned bezout callee exits at part3; no assumption that selected guard is true. Next lift through original deepest guard.
+
+Job record (629): keygen_flow629_002 — RETAINED elaboration failure,17.211s: heap rewrite already closed a goal before redundant case tactic; raw snapshot/log retained, remove redundant tactic.
+
+Job record (629): keygen_flow629_003 — ACCEPTED_LOCAL DeepestBezoutReject217,18.963s,0/0: any actual bezout return0 propagates through the original deepest part3 call guard to a deepest return0, preserving caller state. Next bind selected conditional case and root rejection.
+
+Job record (629): keygen_flow629_004 — RETAINED elaboration failure,114.738s: returned caller helper omitted noncomputable modifier; raw snapshot/log retained. Correct declaration and retry without changing limits.
+
+Job record (629): keygen_flow629_005 — ACCEPTED_LOCAL SelectedBezoutReject217,115.017s,0/0: under explicit selected bad-case hypothesis, full deepest source returns0 and actual root search rejects; no claim that hypothesis holds. Next combine both symbolic outcomes on selected witness.
+
+Job record (629): keygen_flow629_006 — RETAINED elaboration failure,4.076s: Bool coercion leaves false=true in normal-flow simplification. Raw snapshot/log retained; simplify boolean equality explicitly.
+
+Job record (629): keygen_flow629_007 — ACCEPTED_LOCAL SelectedBezoutOutcome217,11.997s,0/0: on one selected witness, bad=true implies original deepest and root-search rejection; bad=false yields actual normal guard execution. Neither Boolean value is asserted. Next export usable good-case constraints.
+
+Job record (629): keygen_flow629_008 — RETAINED elaboration failure,3.073s: good-case conjunction associativity differed after Bool simplification. Raw snapshot/log retained; normalize association.
+
+Job record (629): keygen_flow629_009 — ACCEPTED_LOCAL SelectedBezoutOutcome217,3.873s,0/0: selected symbolic outcomes include conditional full root-search rejection and normal guard continuation, plus good-case nonzero length/low-bit constraints. Neither case asserted. Next audit/canonical replay.
+
+Job record (629): keygen_flow629_010 — ACCEPTED_LOCAL audit, four interfaces/nine axiom results,0/0. Next canonical five-module replay, pin recheck and evidence.
+
+Job record (629): canonical keygen_flow629_canonical — ACCEPTED5/5,0/0,nine standard-only axiom results, 137.19s,maxRSS4741096KiB. Entry74673/predecessor628131 unchanged; next evidence/local commit then Bezout initialization.
+
+Job record (629 checkpoint): evidence PASS151 bindings,5 accepted/nine standard-only results, four retained elaboration failures; entry74673/predecessor628131 unchanged. Exact own paths only; foreign work excluded, no push. Continue630 Bezout initialization.

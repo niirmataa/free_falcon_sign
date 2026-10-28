@@ -1,0 +1,276 @@
+{
+  "utc": "2026-10-28T10:21:53.215470+00:00",
+  "status": "PROVED_KERNEL_SCOPED / NOT_REVIEWED",
+  "overall_owner_goal": "IN_PROGRESS; continue after this intermediate checkpoint",
+  "scope": "Both conditional consequences of the selected initial bezout guard on one witness: true implies actual full bezout early return0, deepest return0 and root-search rejection; false implies actual normal guard continuation and nonzero-length/low-bit constraints.",
+  "entry_manifest": {
+    "path": ".build/steprx195/ENTRY_PINS.json",
+    "sha256": "00f602e751e7324b9628cb753c537941858acac44371d7949e400f97a2573964"
+  },
+  "entry_checked_count": 74673,
+  "entry_missing": 0,
+  "entry_changed": 0,
+  "entry_checks": [
+    {
+      "path": ".build/bezoutflow629/entry_before.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/bezoutflow629/entry_after.log",
+      "sha256": "a03e6075cde8d75ee0cf85880caf84d365a1084878ec90a7467670204ed40f66"
+    },
+    {
+      "path": ".build/bezoutflow629/predecessor_before.log",
+      "sha256": "1510a08259f3179a8b9a181a099fac28f62c3bb5187448e5c895294ec70a0f48"
+    },
+    {
+      "path": ".build/bezoutflow629/predecessor_after.log",
+      "sha256": "1510a08259f3179a8b9a181a099fac28f62c3bb5187448e5c895294ec70a0f48"
+    },
+    {
+      "path": ".build/bezoutflow629/entry_reverify_629.py",
+      "sha256": "641ca0817a30f5d2eea7390621f2686c267a2014e725b574033d856bfbf61d09"
+    },
+    {
+      "path": ".build/bezoutflow629/predecessor_verify.py",
+      "sha256": "be0776f1b250a089198400fe6a0299e707af8e4aab65ad28531d682376a8bacc"
+    },
+    {
+      "path": ".build/bezoutflow629/modules.json",
+      "sha256": "e60225640af31e6f2be692d11f688bd120fe5979b66762d60ee6db0129d3f687"
+    }
+  ],
+  "predecessor_handoff": {
+    "path": "notes/run/KEYGEN_BEZOUT_GUARD_217_628.json",
+    "sha256": "9b4e4f38efec2c434f450d3dd1d9f3aaa8a68763866dcbc360487d47c7693821"
+  },
+  "predecessor_bindings_verified": 131,
+  "job": "keygen_flow629_canonical",
+  "accepted": 5,
+  "receipts": {
+    "path": ".build/jobs/keygen_flow629_canonical/RECEIPTS.json",
+    "sha256": "6b4688b772bf3034244a7de8b52427913e895f19b39196c42663eb9dbfe4a63d"
+  },
+  "inputs": {
+    "path": ".build/jobs/keygen_flow629_canonical/SOURCE_INPUTS.json",
+    "sha256": "e47a6d384833ec106932239b7277cc7d6e4148980b1720f9062913b6e7c01c02"
+  },
+  "runner": {
+    "path": ".build/jobs/keygen_flow629_canonical/RUNNER_SOURCE.py",
+    "sha256": "e8e9cf4ba5e744425464c0057a27d07f62ff82be352c479535425ff436c5b385"
+  },
+  "engine": {
+    "path": ".build/jobs/keygen_flow629_canonical/EXECUTION_SOURCE.py",
+    "sha256": "0acb37f6403e2918628d01e631792e05b44477e2641d0f65ca6d1d960c6af95c"
+  },
+  "preflight": {
+    "path": ".build/jobs/keygen_flow629_canonical/PREFLIGHT.json",
+    "sha256": "77b85460f0db804120aeb9085d3225799664af7c58661373c8af89bd51856d4c"
+  },
+  "modules": [
+    {
+      "module": "Source3.BezoutEarlyReturn217",
+      "source": {
+        "path": "formal/Source3/BezoutEarlyReturn217.lean",
+        "sha256": "90a3eeb0d6c74eba39ba10f3cb20afc783f1c28d878bfff6a76cfc8b6b1d088f"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_flow629_canonical/formal/Source3/BezoutEarlyReturn217.lean",
+        "sha256": "90a3eeb0d6c74eba39ba10f3cb20afc783f1c28d878bfff6a76cfc8b6b1d088f"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_flow629_canonical/lib/Source3/BezoutEarlyReturn217.olean",
+        "sha256": "1ac6db1fd4ea87ac9194abc120cf4d5b42a92b3a411cf0ba474c9172379058cf"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_flow629_canonical/logs/Source3_BezoutEarlyReturn217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_flow629_canonical/logs/Source3_BezoutEarlyReturn217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 4.582,
+      "maxrss_kib": 4233876
+    },
+    {
+      "module": "Source3.DeepestBezoutReject217",
+      "source": {
+        "path": "formal/Source3/DeepestBezoutReject217.lean",
+        "sha256": "5b53a65cf928bf03c59519f4dfd01d5e86073c796f35ed394935b0568cd435d9"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_flow629_canonical/formal/Source3/DeepestBezoutReject217.lean",
+        "sha256": "5b53a65cf928bf03c59519f4dfd01d5e86073c796f35ed394935b0568cd435d9"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_flow629_canonical/lib/Source3/DeepestBezoutReject217.olean",
+        "sha256": "45de1053109e08f29221a99203750d0c10dc0cf8d8a0fa9368ea27a771d073cd"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_flow629_canonical/logs/Source3_DeepestBezoutReject217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_flow629_canonical/logs/Source3_DeepestBezoutReject217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 18.413,
+      "maxrss_kib": 4741096
+    },
+    {
+      "module": "Source3.SelectedBezoutReject217",
+      "source": {
+        "path": "formal/Source3/SelectedBezoutReject217.lean",
+        "sha256": "94a4c270474bd6a17f899da05d53f726a910c71102a89948c986f466aea22cfd"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_flow629_canonical/formal/Source3/SelectedBezoutReject217.lean",
+        "sha256": "94a4c270474bd6a17f899da05d53f726a910c71102a89948c986f466aea22cfd"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_flow629_canonical/lib/Source3/SelectedBezoutReject217.olean",
+        "sha256": "4b20f6211a7a80e49208b480abbe014a1f7266bc2d2f7d442fd02d21d73aa2ea"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_flow629_canonical/logs/Source3_SelectedBezoutReject217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_flow629_canonical/logs/Source3_SelectedBezoutReject217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 108.098,
+      "maxrss_kib": 4741096
+    },
+    {
+      "module": "Source3.SelectedBezoutOutcome217",
+      "source": {
+        "path": "formal/Source3/SelectedBezoutOutcome217.lean",
+        "sha256": "d4176d9a31d0b0db72546eeda980b0d4ca2c961e15bf36cd9c47fafa6b593608"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_flow629_canonical/formal/Source3/SelectedBezoutOutcome217.lean",
+        "sha256": "d4176d9a31d0b0db72546eeda980b0d4ca2c961e15bf36cd9c47fafa6b593608"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_flow629_canonical/lib/Source3/SelectedBezoutOutcome217.olean",
+        "sha256": "771114996f72b3ba86b3f70d2fa79ae7b22f7cd258c61d6203d879ba2c834b85"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_flow629_canonical/logs/Source3_SelectedBezoutOutcome217.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_flow629_canonical/logs/Source3_SelectedBezoutOutcome217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.074,
+      "maxrss_kib": 4741096
+    },
+    {
+      "module": "Source3.SelectedBezoutOutcomeAudit217",
+      "source": {
+        "path": "formal/Source3/SelectedBezoutOutcomeAudit217.lean",
+        "sha256": "0fe446b21bb9d96bf81e32ddd733d910a2d5f19eca48c5a611c61395aff1379c"
+      },
+      "snapshot": {
+        "path": ".build/jobs/keygen_flow629_canonical/formal/Source3/SelectedBezoutOutcomeAudit217.lean",
+        "sha256": "0fe446b21bb9d96bf81e32ddd733d910a2d5f19eca48c5a611c61395aff1379c"
+      },
+      "olean": {
+        "path": ".build/jobs/keygen_flow629_canonical/lib/Source3/SelectedBezoutOutcomeAudit217.olean",
+        "sha256": "278b2c4674e6d9b40d3de874d9f49cb74fb53a8332adc9af99265528dbb9fa01"
+      },
+      "stdout": {
+        "path": ".build/jobs/keygen_flow629_canonical/logs/Source3_SelectedBezoutOutcomeAudit217.stdout",
+        "sha256": "0042187da96e818c0dea7bedd9ae1c69978ecf8899b43ed782bd75d00354f2bd"
+      },
+      "stderr": {
+        "path": ".build/jobs/keygen_flow629_canonical/logs/Source3_SelectedBezoutOutcomeAudit217.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "elapsed_s": 3.023,
+      "maxrss_kib": 4741096
+    }
+  ],
+  "axioms": {
+    "FT1536.Source3.BezoutEarlyReturn217.split_prefix": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.BezoutEarlyReturn217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.DeepestBezoutReject217.rest_shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.DeepestBezoutReject217.guard_shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.DeepestBezoutReject217.yes_shape": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.DeepestBezoutReject217.source": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SelectedBezoutReject217.consequence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SelectedBezoutOutcome217.good_constraints": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FT1536.Source3.SelectedBezoutOutcome217.selected": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "failures_and_workshop": {
+    "path": "notes/run/KEYGEN_BEZOUT_OUTCOME_217_FAILURES_629.json",
+    "sha256": "ec7a3f7a9fa23f774d35f68aaa48a81f8121be31edf9e96c5e86fbccd1dcaaba"
+  },
+  "report": {
+    "path": "notes/run/KEYGEN_BEZOUT_OUTCOME_217_629_REPORT.md",
+    "sha256": "6eabaa4f4a0e0ab0f4d96dfbbd6f078b0dc900a4ab361f83a316462fdb49f0ad"
+  },
+  "evidence_generator": {
+    "path": ".build/evidence_v1.py",
+    "sha256": "1bc738f64ab2604686ab4e8da3ab0cc8eb3ef786f9486ab6b1d94cc70d513b3e"
+  },
+  "evidence_configuration": {
+    "path": ".build/bezoutflow629/evidence_config.json",
+    "sha256": "c01235b496b504970d9e55e8716e8344e03cb4c1b45dd801ada02dfda5bb4e32"
+  },
+  "source_proof_markers": [],
+  "linter_suppressions": [],
+  "limits_unchanged": true,
+  "independent_review": "NOT_RUN",
+  "push": false,
+  "next_unused_suffix": 630,
+  "next_obligations": [
+    "Execute original Bezout initialization and remaining body under the good branch, or derive the selected guard value without assuming it",
+    "Full root/certificate/codec/source-to-fiber B1"
+  ],
+  "not_claimed": [
+    "Concrete selected guard value, unconditional root failure or success, completed normal-branch Bezout",
+    "Mathematical NTT/root/table/CRT/centering/Montgomery/integer laws",
+    "Full KeyGen/Sign/compiler/security/unconditional positivity/probability",
+    "Independent review"
+  ]
+}
