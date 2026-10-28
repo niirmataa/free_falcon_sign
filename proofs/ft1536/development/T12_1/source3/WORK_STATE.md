@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; d9 output inverse-zero checkpoint620 accepted;621 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+620 canonical keygen_ninth620_canonical accepted3/3,0/0,7 standard-only axiom results, evidence verified. Pinned inverse corpus at logn0 executes source
+prologue/early void return, preserving heap. The true !out_ntt branch executes
+both actual fd/gd inverse calls with logn-1=0 and preserves caller state,
+under explicit source-cell/binding/capacity hypotheses. It is not a skip.
+This generic branch is not yet instantiated on actual selected d9 loop;
+619 derives actual d9 caller out_ntt0. No transform law is claimed.
+11.076s,maxRSS3668564KiB. ENTRY74673/predecessor619132 unchanged before/after.
+Six local attempts retain three corrected elaboration failures; no new
+counterexample/resource failure/suppression/failed cache. Independent review
+NOT_RUN. Prior retained findings remain. Report/evidence
+KEYGEN_NINTH_OUTPUT_ZERO_217_620_REPORT.md and matching JSON; failure register
+KEYGEN_NINTH_OUTPUT_ZERO_217_FAILURES_620.json.
+Next621 instantiate this true branch in actual d9 first-prime and extra-prime
+loops, then CRT/d9 return, root/certificate/codec/full B1. No mathematical
+NTT/root/table/CRT/centering/Montgomery/integer law or broad KeyGen/Sign/
+compiler/security/unconditional positivity/probability. Permanent195 bad
+bodyHeap/stepState UNUSED; Old110/measured/five do_sign unchanged. Foreign
+PROMPT_T14 untouched; one Lean job, -M6144 fixed, no push. Continue after
+checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected d9 prefix checkpoint619 accepted;620 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11654,3 +11680,23 @@ Job record (619): keygen_ninth619_007 — ACCEPTED_LOCAL audit, six interfaces/6
 Job record (619): canonical keygen_ninth619_canonical — ACCEPTED7/7,0/0,68 standard-only axiom results, 44.763s,maxRSS4266712KiB. Entry74673/predecessor618251 unchanged; next evidence and local commit.
 
 Job record (619 checkpoint): evidence PASS132 bindings,7 accepted/68 standard-only results, zero failed local attempts; entry74673/predecessor618251 unchanged. Exact own paths only; foreign work excluded, no push. Continue620 d9 first-prime and true !out_ntt output branch.
+
+Job record (620 start):619 committedfbe0e0cc; no push. Continue actual d9 first-prime source, including true !out_ntt output inverses, runtime .build/ninthbody620. Verify entry/predecessor before first proof job.
+
+Job record (620): fresh ENTRY74673 and predecessor619132 evidence bindings verified before first620 source/job. Investigate d9 actual output inverse call: its logn-1=0 source early return must execute, preserving heap, not an assumed skip.
+
+Job record (620): keygen_ninth620_001 — RETAINED elaboration failure,3.122s, exit1: early-return proof used an unavailable qualified constructor and decide on a result containing free state; no mathematical counterexample. Raw snapshot/log retained; use inferred constructor and explicit flow discrimination.
+
+Job record (620): keygen_ninth620_002 — ACCEPTED_LOCAL NinthInverseZero217,2.976s,0/0: actual pinned inverse corpus at logn0 reaches early void return with heap unchanged; no transform law. Next call binding and true !out_ntt fd/gd pair.
+
+Job record (620): keygen_ninth620_003 — RETAINED elaboration failure,3.927s, exit1: malformed inequality token and unprovided Decidable equality for Side caused cascading binding errors; no mathematical counterexample. Raw source snapshot/log retained; use explicit side-root definition and spaced relation.
+
+Job record (620): keygen_ninth620_004 — RETAINED elaboration failure,3.172s, exit1: root capacity case simplification and equality of unchanged returned caller state remained unproved; no mathematical counterexample. Raw source snapshot/log retained; prove cases explicitly.
+
+Job record (620): keygen_ninth620_005 — ACCEPTED_LOCAL NinthOutputPair217,4.073s,0/0: actual true !out_ntt branch invokes both fd/gd inverse callees at logn0, early returns preserve caller state under explicit Input. Next audit and canonical replay before connecting to d9 loop.
+
+Job record (620): keygen_ninth620_006 — ACCEPTED_LOCAL audit, two interfaces/seven axiom results,0/0. Next canonical replay and pin verification.
+
+Job record (620): canonical keygen_ninth620_canonical — ACCEPTED3/3,0/0,7 standard-only axiom results, 11.076s,maxRSS3668564KiB. Entry74673/predecessor619132 unchanged; next evidence/local commit then d9 loop.
+
+Job record (620 checkpoint): evidence PASS98 bindings,3 accepted/7 standard-only results, three retained elaboration failures; entry74673/predecessor619132 unchanged. Exact own paths only; foreign work excluded, no push. Continue621 actual d9 loop and branch composition.
