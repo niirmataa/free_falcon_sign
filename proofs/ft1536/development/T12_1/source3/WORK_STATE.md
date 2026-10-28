@@ -1,3 +1,26 @@
+# SEED9_R1 — ACTIVE; selected original outer loop checkpoint623 accepted;624 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+623 canonical keygen_outer623_canonical accepted2/2,0/0,one standard-only axiom result, evidence verified. The original selected make_fg outer loop now
+composes actual d1..d9 calls, bodies, increments and guards on one witness,
+including d9 true !out_ntt inverse calls and the d10 false terminal guard.
+Original top tail executes from its before state and exports both exact
+335-word sections on that witness; no desired run/output premise.
+23.383s,maxRSS4176388KiB. ENTRY74673/predecessor622255 unchanged before/after.
+Two local attempts accepted,0 failures; no new counterexample/resource
+failure/suppression/failed cache. Independent review NOT_RUN. Prior retained
+findings remain. Report/evidence KEYGEN_SELECTED_OUTER_LOOP_217_623_REPORT.md
+and matching JSON; failure register KEYGEN_SELECTED_OUTER_LOOP_217_FAILURES_623.json.
+Next624 continue selected source top beyond make_fg into root solve, then
+certificate/codec/full B1. No mathematical NTT/root/table/CRT/centering/
+Montgomery/integer law or broad KeyGen/Sign/compiler/security/unconditional
+positivity/probability. Permanent195 bad bodyHeap/stepState UNUSED;
+Old110/measured/five do_sign unchanged. Foreign PROMPT_T14 untouched; one
+Lean job, -M6144 fixed; no push. Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; complete selected d9 return checkpoint622 accepted;623 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11814,3 +11837,15 @@ Job record (622): keygen_ninth622_011 — ACCEPTED_LOCAL audit, seven interfaces
 Job record (622): canonical keygen_ninth622_canonical — ACCEPTED16/16,0/0,104 standard-only axiom results, 142.913s,maxRSS5728584KiB. Entry74673/predecessor621266 unchanged; next evidence/local commit then outer-loop composition.
 
 Job record (622 checkpoint): evidence PASS255 bindings,16 accepted/104 standard-only results, one retained elaboration failure; entry74673/predecessor621266 unchanged. Exact own paths only; foreign work excluded, no push. Continue623 whole outer-loop composition.
+
+Job record (623 start):622 committed25e31970; no push. Compose actual d1..d9 source iterations and terminal guard in original outer loop; runtime .build/outer623. Verify entry/predecessor before first proof job.
+
+Job record (623): fresh ENTRY74673 and predecessor622255 evidence bindings verified before first623 source/job. Next compose actual nine bodies/increments into original outer loop with the final335-word sections.
+
+Job record (623): keygen_outer623_001 — ACCEPTED_LOCAL SelectedOuterLoop217,10.991s,0/0: actual d1..d9 source bodies/increments composed into original loop and top tail, terminal false guard, both335-word final images on same witness. Next audit/canonical replay.
+
+Job record (623): keygen_outer623_002 — ACCEPTED_LOCAL audit, one public interface/one axiom result,0/0. Next canonical replay and pin verification.
+
+Job record (623): canonical keygen_outer623_canonical — ACCEPTED2/2,0/0,one standard-only axiom result, 23.383s,maxRSS4176388KiB. Entry74673/predecessor622255 unchanged; next evidence/local commit then top continuation.
+
+Job record (623 checkpoint): evidence PASS53 bindings,2 accepted/one standard-only result, zero failed attempts; entry74673/predecessor622255 unchanged. Exact own paths only; foreign work excluded, no push. Continue624 selected top continuation.
