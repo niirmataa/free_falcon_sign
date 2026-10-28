@@ -1,3 +1,30 @@
+# SEED9_R1 — ACTIVE; selected d9 prefix checkpoint619 accepted;620 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+619 canonical keygen_ninth619_canonical accepted7/7,0/0,68 standard-only axiom results, evidence verified. Actual d9 entry after completed d8, n2/hn1, original
+MAX_BL_SMALL3 lengths166/335, part0/part1 and overlapping2656-byte move with
+both332-word fs/gs images. Prior gd1002 and new gd1005 are explicitly
+distinct; new roots fd670/gd1005/fs1340/gs1672/gm2004/igm2006/t12008,
+output335/input332 words; no desired run/output premise.
+Crucially, actual d9 Bind derives out_ntt0: d+1<depth10 is false and the
+selected outer out_ntt0 is preserved. The subsequent true !out_ntt inverse
+output branch remains open and must be executed, not skipped as in d1..d8.
+44.763s,maxRSS4266712KiB. ENTRY74673/predecessor618251 unchanged before/after.
+Seven local attempts accepted with0 failures; no new counterexample/resource
+failure/suppression/failed cache. Independent review NOT_RUN. Prior retained
+findings remain. Report/evidence KEYGEN_NINTH_PREFIX_217_619_REPORT.md and
+matching JSON; failure register KEYGEN_NINTH_PREFIX_217_FAILURES_619.json.
+Next620 d9 first-prime/copy/product/inverse loop and true !out_ntt output
+branch, then CRT/extra primes/d9 return, root/certificate/codec/full B1.
+No mathematical NTT/root/table/CRT/centering/Montgomery/integer law or broad
+KeyGen/Sign/compiler/security/unconditional positivity/probability.
+Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign
+unchanged; foreign PROMPT_T14 untouched. One Lean process, -M6144 and fixed
+limits; exact local commits, no push. Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; complete selected d8 return checkpoint618 accepted;619 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11605,3 +11632,25 @@ Structural trap for619: FirstStepEntry187.outExpr is (d+1<depth) || out_ntt; at 
 Job record (618): canonical keygen_eighth618_canonical — ACCEPTED16/16,0/0,104 standard-only axiom results, 131.995s,maxRSS5852388KiB. Entry74673/predecessor617260 unchanged; next evidence/local commit then d9 prefix.
 
 Job record (618 checkpoint): evidence PASS251 bindings,16 accepted/104 standard-only results, one retained local failure including memory diagnostic; entry74673/predecessor617260 unchanged. Exact own paths only; foreign work excluded, no push. Continue619 d9 prefix with false outExpr.
+
+Job record (619 start):618 committed9ae80998; no push. Continue actual d9 entry/layout and overlapping move, derive false outExpr and note true !out_ntt branch; runtime .build/ninth619. Verify entry/predecessor before first proof job.
+
+Job record (619): fresh ENTRY74673 and predecessor618251 evidence bindings verified before first619 source/job. Next derive actual d9 false outExpr and caller binding.
+
+Job record (619): keygen_ninth619_001 — ACCEPTED_LOCAL NinthStepEntry217,16.660s,0/0: actual d9 caller and false outExpr bind out_ntt0, old332-word fd/gd inputs derived from completed d1..d8 execution; true !out_ntt remains later body work. Next n2/hn1 and lengths.
+
+Job record (619): keygen_ninth619_002 — ACCEPTED_LOCAL NinthStepStart217,4.023s,0/0: actual d9 source declarations and n2/hn1 initialization. Next MAX_BL_SMALL3 lengths166/335 and pointer layout.
+
+Job record (619): keygen_ninth619_003 — ACCEPTED_LOCAL NinthStepLengths217,14.752s,0/0: source MAX_BL_SMALL3 reads indices9/10, slen166/tlen335 with readonly stability. Next concrete d9 layout.
+
+Job record (619): keygen_ninth619_004 — ACCEPTED_LOCAL NinthStepLayout217,3.572s,0/0: actual d9 layout fd670/gd1005/fs1340/gs1672/gm2004/igm2006/t12008, output335/input332 words. Next overlapping move from old gd1002.
+
+Job record (619): keygen_ninth619_005 — ACCEPTED_LOCAL NinthStepMove217,3.677s,0/0: actual overlapping2656-byte move reads old gd1002 and moves both332-word inputs to fs1340/gs1672; new gd1005 is distinct. Next connect complete source prefix.
+
+Job record (619): keygen_ninth619_006 — ACCEPTED_LOCAL NinthStepPrefix217,4.977s,0/0: complete actual d9 prefix from selected earlier runs, both332-word inputs moved under same witness. Next audit and canonical replay.
+
+Job record (619): keygen_ninth619_007 — ACCEPTED_LOCAL audit, six interfaces/68 axiom results,0/0. Next canonical seven-module replay and pin verification.
+
+Job record (619): canonical keygen_ninth619_canonical — ACCEPTED7/7,0/0,68 standard-only axiom results, 44.763s,maxRSS4266712KiB. Entry74673/predecessor618251 unchanged; next evidence and local commit.
+
+Job record (619 checkpoint): evidence PASS132 bindings,7 accepted/68 standard-only results, zero failed local attempts; entry74673/predecessor618251 unchanged. Exact own paths only; foreign work excluded, no push. Continue620 d9 first-prime and true !out_ntt output branch.
