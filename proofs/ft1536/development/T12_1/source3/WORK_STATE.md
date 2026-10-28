@@ -1,3 +1,28 @@
+# SEED9_R1 — ACTIVE; conditional Bezout parser factoring checkpoint638 accepted;639 next
+
+Owner resumed 2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+638 canonical keygen_parser638_canonical accepted 5/5, clean, 5 standard-only
+axiom results, 202 evidence bindings verified. Parser lemmas for arbitrary token
+suffixes prove the guard expression, successful for(;;) loop shape, and if
+branch guard including optional else. Pinned lines4015–4022 and their finite
+normalized tokens are kernel checked. Arbitrary-tail lexer composition and full
+part7 binding/execution remain OPEN; no branch or loop termination is asserted.
+317.941s, maxRSS2406636KiB. ENTRY74673/predecessor637183 unchanged before/after.
+Fifteen local attempts retain ten elaboration failures including two failed
+arbitrary-tail tokenizer proofs; no limits raised or counterexample. Independent
+review NOT_RUN. Prior retained findings remain. Report/evidence
+KEYGEN_BEZOUT_PARSER_217_638_REPORT.md and matching JSON; failure register
+KEYGEN_BEZOUT_PARSER_217_FAILURES_638.json. Next639 derive lexer composition
+structurally without generated overlapping-pattern simp equations, connect
+actual part7, then full Bezout/root/certificate/codec/full B1. No mathematical
+NTT/root/table/CRT/centering/Montgomery/integer law or broad KeyGen/Sign/
+compiler/security/unconditional positivity/probability. Permanent195 bad
+bodyHeap/stepState UNUSED; Old110/measured/five do_sign unchanged. Foreign
+PROMPT_T14 untouched; one Lean job, -M6144 fixed; no push. Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; conditional Bezout loop guard source line checkpoint637 accepted;638 next
 
 Owner resumed 2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -12614,3 +12639,22 @@ Job record (635): keygen_unit635_001 — ACCEPTED_LOCAL diagnostic,23.301s,0/0: 
 - 637 / job `keygen_loop637_012`: ACCEPTED, clean log, 27.210 s, `Source3.BezoutLoopGuardLine217`; kernel parses pinned original line 4022 and proves it equals the explicit guard evaluated in 011. This is a source-line binding, not yet a proof that the full parsed part7 projects to it or that part7 executes.
 - 637 / job `keygen_loop637_013`: ACCEPTED, clean log, 23.601 s, `Source3.SelectedBezoutLoopLine217`; under selected good/nonunit conditions and after standalone r declaration, the expression parsed from pinned line4022 evaluates with exact symbolic length test on the same witness. Full part7 linkage/execution remains open.
 - 637 / job `keygen_loop637_canonical`: ACCEPTED 6/6, clean logs, 89.225 s; axiom audit pending evidence verification. ENTRY and predecessor after-checks passed. Receipt retained.
+
+- 638 started: continue from local checkpoint 3eff5c84; verify ENTRY and 637 evidence before any 638 source/job. No push.
+- 638 preflight: ENTRY 74673/74673 unchanged; all183 637 evidence bindings verified before source or Lean job. Logs in `.build/bezoutparser638/`.
+- 638 / job `keygen_parser638_001`: FAILED, 36.781 s; retained elaboration error: token type opened from wrong namespace. No counterexample; correct to B20.C.Token.
+- 638 / job `keygen_parser638_002`: FAILED, 26.752 s; guard-prefix lemma typechecked but whole module rejected because simplifier did not unfold mutual parseStatement for for-loop shape. Factor prefix lemma, then treat recursion equation separately; no counterexample.
+- 638 / job `keygen_parser638_003`: ACCEPTED, clean log, 14.868 s, `Source3.BezoutParserPrefix217`; guard token parser is proven for arbitrary environment and arbitrary unparsed suffix. This structural fact avoids expanding full part7 but is not yet linked to its full parse. Retained 001/002 errors.
+- 638 / job `keygen_parser638_004`: FAILED, 20.739 s; retained elaboration error simplifying Option do-notation after structural parse split. The change to the recursive parse equation succeeded; repair by reducing the concrete result explicitly.
+- 638 / job `keygen_parser638_005`: ACCEPTED, clean log, 22.542 s, `Source3.BezoutParserLoop217`; for any suffix and successful parse, actual for(;;) parser constructs a loop with constant-true guard. Failed 004 retained.
+- 638 / job `keygen_parser638_006`: FAILED, 32.967 s; retained elaboration mismatch because guard-prefix do-notation had not reduced before rewrite. Parse equation matches and prefix rewrite succeeds; add explicit reduction.
+- 638 / job `keygen_parser638_007`: FAILED, 31.516 s; retained elaboration mismatch in the parser's optional else match. Factor the match after reducing the first parse rather than destructing concrete tokens.
+- 638 / job `keygen_parser638_008`: FAILED, 40.896 s; retained elaboration mismatch in dependent match after successful if-body parse. Try reducing Option.bind explicitly before splitting optional else.
+- 638 / job `keygen_parser638_009`: FAILED, 37.949 s; retained elaboration mismatch: Option do-notation did not reduce with `Option.bind` simp. Try definitional simplification of the already-small result.
+- 638 / job `keygen_parser638_010`: ACCEPTED, clean log, 42.751 s, `Source3.BezoutParserIf217`; for any suffix and successful parse of guard prefix, actual if parser constructs a branch with the exact guard, whether or not else exists. Failed 006-009 retained; no full part7 linkage claimed.
+- 638 / job `keygen_parser638_011`: FAILED, 53.738 s; retained elaboration error: `prefix` is reserved Lean syntax. Rename definition before checking lexer theorem; no counterexample.
+- 638 / job `keygen_parser638_012`: FAILED, 61.810 s; retained elaboration failure: arbitrary-tail tokenizer equality is not definitional by rfl (fuel/map/comment boundary need explicit lemmas). Pinned-prefix equality itself typechecked; factor finite prefix lexical proof, leaving compositional suffix lemma open.
+- 638 / job `keygen_parser638_013`: ACCEPTED, clean log, 54.938 s, `Source3.BezoutLexerPrefix217`; pinned source lines4015-4022 and their finite normalized token stream are kernel verified. Compositional arbitrary-tail tokenization and full part7 linkage remain open.
+- 638 / job `keygen_parser638_014`: ACCEPTED, clean log, 57.907 s, `Source3.BezoutLexerInspect217`; finite fuel diagnostic only; no kernel proof of arbitrary-tail compositionality.
+- 638 / job `keygen_parser638_015`: FAILED, 57.530 s; retained elaboration failure: Lean could not generate a simp equational theorem for overlapping tokenizer patterns; arbitrary-tail compositionality remains open. Further work needs a structural tokenizer proof, not repeated simplification.
+- 638 / job `keygen_parser638_canonical`: ACCEPTED 5/5, clean logs, 317.941 s; axiom audit pending evidence verification. ENTRY and predecessor after-checks passed. Receipt retained.
