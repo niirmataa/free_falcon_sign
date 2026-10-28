@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; Bezout original first loop/guard AST checkpoint640 accepted;641 next
+
+Owner resumed 2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+640 canonical keygen_ast640_canonical accepted 9/9, clean, 10 standard-only
+axiom results, 163 evidence bindings verified. Structural parser proof binds
+actual original part7 to a constant-true for-loop, scoped r declaration and
+first if with the exact source guard. Under explicit good-guard and nonunit
+conditions one selected witness executes parts3–6, the matching declaration
+standalone, and evaluates the first guard symbolically. This repairs the 637
+full-AST projection OOM without increasing limits. Part7 branch execution,
+actual guard truth, loop termination and full Bezout result remain OPEN.
+1058.712s, maxRSS1769432KiB. ENTRY74673/predecessor639220 unchanged before/
+after. Nine local attempts retain one ordinary elaboration error; no limits
+raised or counterexample. Independent review NOT_RUN. Prior retained findings
+remain. Report/evidence KEYGEN_BEZOUT_AST_217_640_REPORT.md and matching JSON;
+failure register KEYGEN_BEZOUT_AST_217_FAILURES_640.json. Next641 execute the
+first actual loop iteration/branch, then full Bezout/root/certificate/codec/
+full B1. No mathematical NTT/root/table/CRT/centering/Montgomery/integer law or
+broad KeyGen/Sign/compiler/security/unconditional positivity/probability.
+Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign
+unchanged. Foreign PROMPT_T14 untouched; one Lean job, -M6144 fixed; no push.
+Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; Bezout part7 compositional lexer checkpoint639 accepted;640 next
 
 Owner resumed 2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -12701,3 +12727,16 @@ Job record (635): keygen_unit635_001 — ACCEPTED_LOCAL diagnostic,23.301s,0/0: 
 - 639 / job `keygen_lexer639_013`: FAILED, 152.653 s; retained elaboration mismatch: case split rewrote token equality goal to reflexivity. Replace hypothesis with rfl; no mathematical counterexample.
 - 639 / job `keygen_lexer639_014`: ACCEPTED, clean log, 152.877 s, `Source3.BezoutLexerPart7Tokens217`; existing successful part7 parse entails an actual normalized token stream beginning with the pinned prefix. This discharges the arbitrary-tail lexer gap from 638; exact full parsed statement structure and execution remain open. Failed 012/013 retained.
 - 639 / job `keygen_lexer639_canonical`: ACCEPTED 10/10, clean logs, 898.942 s; axiom audit pending evidence verification. ENTRY and predecessor after-checks passed. Receipt retained.
+
+- 640 started: continue from local checkpoint 3ddd718f; verify ENTRY and 639 evidence before any 640 source/job. No push.
+- 640 preflight: ENTRY 74673/74673 unchanged; all220 639 evidence bindings verified before source or Lean job. Logs in `.build/bezoutast640/`.
+- 640 / job `keygen_ast640_001`: FAILED, 56.303 s; retained ordinary elaboration mismatch from normalized `for` token and case-rewritten equality. Parser-body inversion shape identified; repair equalities.
+- 640 / job `keygen_ast640_002`: ACCEPTED, clean log, 55.153 s, `Source3.BezoutParserBodyHead217`; structural inversion of a successful body parse starting with for, preserving first statement and remaining parse. Failed 001 retained.
+- 640 / job `keygen_ast640_003`: ACCEPTED, clean log, 56.900 s, `Source3.BezoutParserPart7Body217`; actual part7 parser body succeeds on the proven normalized prefix and returns the original part7 without expanding AST. Failed 001 retained.
+- 640 / job `keygen_ast640_004`: ACCEPTED, clean log, 56.872 s, `Source3.BezoutParserActualLoop217`; actual original parsed part7 is proven structurally to begin with the actual constant-true for-loop. This repairs the full-loop shape OOM from 637 without expanding 185-line AST. Its inner branch and execution remain open.
+- 640 / job `keygen_ast640_005`: ACCEPTED, clean log, 71.539 s, `Source3.BezoutParserLoopScope217`; structural inversions retain recursive parse evidence for actual for-loop and brace scope, enabling access to inner body without AST expansion.
+- 640 / job `keygen_ast640_006`: ACCEPTED, clean log, 69.871 s, `Source3.BezoutParserDecl217`; exact original int r declaration parses for any remaining tokens.
+- 640 / job `keygen_ast640_007`: ACCEPTED, clean log, 83.762 s, `Source3.BezoutParserBodyInner217`; reusable structural inversion for body parses beginning with int/if, without expanding remainder.
+- 640 / job `keygen_ast640_008`: ACCEPTED, clean log, 70.533 s, `Source3.BezoutParserActualBranch217`; exact original part7 AST structurally begins with constant-true for-loop, scope, actual r declaration and first if with pinned guard. This removes earlier full-AST projection OOM without increasing limits. Branch execution/termination remain open.
+- 640 / job `keygen_ast640_009`: ACCEPTED, clean log, 70.830 s, `Source3.SelectedBezoutActualGuard217`; exact original part7 loop/declaration/first-if AST and the conditional selected prior execution plus evaluated first guard are combined. The guard outcome, execution of if body/part7 and termination are not claimed.
+- 640 / job `keygen_ast640_canonical`: ACCEPTED 9/9, clean logs, 1058.712 s; axiom audit pending evidence verification. ENTRY and predecessor after-checks passed. Receipt retained.
