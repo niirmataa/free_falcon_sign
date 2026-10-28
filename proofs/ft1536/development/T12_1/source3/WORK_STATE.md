@@ -1,3 +1,28 @@
+# SEED9_R1 — ACTIVE; selected d7 prefix checkpoint613 accepted;614 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+613 canonical keygen_seventh613_canonical accepted7/7,0/0,68 standard-only axiom results, evidence verified. Actual d7 entry after completed d6, n8/hn4, original
+MAX_BL_SMALL3 lengths42/82, part0/part1 and overlapping2688-byte move with
+both336-word fs/gs images. Previous source gd1006 and new output gd998 are
+explicitly distinct; no desired run/output premise. New roots fd670/gd998/
+fs1326/gs1662/gm1998/igm2006/t12014.
+30.88s,maxRSS4353604KiB. ENTRY74673/predecessor612234 unchanged before/after.
+Eight local attempts retain one elaboration failure from missing witnesses,
+corrected in007; no new counterexample/resource failure/suppression/failed
+cache. Independent review NOT_RUN. Prior retained findings remain. Report/
+evidence KEYGEN_SEVENTH_PREFIX_217_613_REPORT.md and matching JSON; failure
+register KEYGEN_SEVENTH_PREFIX_217_FAILURES_613.json.
+Next614 d7 first-prime loop u0..41, then CRT and extra u42..81, later d8..9,
+root/certificate/codec/full B1. No mathematical NTT/root/table/CRT/
+centering/Montgomery/integer law or broad KeyGen/Sign/compiler/security/
+unconditional positivity/probability. Permanent195 bad bodyHeap/stepState
+UNUSED; Old110/measured/five do_sign unchanged; foreign PROMPT_T14 untouched.
+One Lean process, -M6144 and fixed limits; exact local commits, no push.
+Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; complete selected d6 return checkpoint612 accepted;613 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11278,3 +11303,27 @@ Job record (612): keygen_sixth612_009 — ACCEPTED_LOCAL audit, seven public int
 Job record (612): canonical keygen_sixth612_canonical — ACCEPTED16/16,0/0,104 standard-only axiom results, 97.515s,maxRSS5812988KiB. Entry74673/predecessor611255 unchanged; next evidence/local commit, then d7 prefix.
 
 Job record (612 checkpoint): evidence PASS234 bindings, 16 accepted/104 standard-only results, zero failed local attempts; entry74673 and predecessor611255 unchanged. Exact own paths only; foreign work excluded, no push. Continue613 actual d7 prefix.
+
+Job record (613 start):612 committed14349a27; no push. Continue actual d7 entry/layout and overlapping move; runtime .build/seventh613. Verify entry/predecessor before first proof job.
+
+Job record (613): fresh ENTRY74673 and predecessor612234 evidence bindings verified before first613 source/job. Next actual d7 caller binding and start.
+
+Job record (613): keygen_seventh613_001 — ACCEPTED_LOCAL SeventhStepEntry217,4.627s,0/0: actual d7 caller binding and old336-word fd/gd inputs derived from complete d1..d6 execution. Next n8/hn4 and source lengths.
+
+Job record (613): keygen_seventh613_002 — ACCEPTED_LOCAL SeventhStepStart217,3.174s,0/0: actual d7 source declarations and n8/hn4 initialization. Next MAX_BL_SMALL3 lengths42/82 and pointer layout.
+
+Job record (613): keygen_seventh613_003 — ACCEPTED_LOCAL SeventhStepLengths217,8.735s,0/0: source table MAX_BL_SMALL3 reads at indices7/8, slen42/tlen82, with readonly stability. Next d7 concrete pointer layout.
+
+Job record (613): keygen_seventh613_004 — ACCEPTED_LOCAL SeventhStepLayout217,4.886s,0/0: actual d7 source layout fd670/gd998/fs1326/gs1662/gm1998/igm2006/t12014, output328/input336 words. Next overlapping move from old gd1006.
+
+Job record (613): keygen_seventh613_005 — ACCEPTED_LOCAL SeventhStepMove217,5.779s,0/0: actual overlapping2688-byte move reads old gd1006 and moves both336-word inputs to fs1326/gs1662; new gd998 is distinct. Next connect complete source prefix.
+
+Job record (613): keygen_seventh613_006 — RETAINED elaboration failure,3.323s, exit1: source witness destructuring omitted first5/extra5 and shifted subsequent binders; no mathematical counterexample. Raw snapshot/log retained. Correct witness list and d7 docstring, then retry.
+
+Job record (613): keygen_seventh613_007 — ACCEPTED_LOCAL SeventhStepPrefix217,3.573s,0/0: complete actual d7 prefix from selected earlier runs, both336-word inputs moved under same source witness. Next axiom audit/canonical replay.
+
+Job record (613): keygen_seventh613_008 — ACCEPTED_LOCAL audit, six interfaces/68 axiom results,0/0. Next canonical seven-module replay and pin verification.
+
+Job record (613): canonical keygen_seventh613_canonical — ACCEPTED7/7,0/0,68 standard-only axiom results, 30.88s,maxRSS4353604KiB. Entry74673/predecessor612234 unchanged; next evidence and local commit.
+
+Job record (613 checkpoint): evidence PASS142 bindings,7 accepted/68 standard-only results, one retained failed local attempt; entry74673 and predecessor612234 unchanged. Exact own paths only; foreign work excluded, no push. Continue614 d7 first-prime loop.
