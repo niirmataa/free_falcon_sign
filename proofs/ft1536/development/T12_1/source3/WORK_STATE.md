@@ -1,3 +1,27 @@
+# SEED9_R1 — ACTIVE; selected make_fg caller return checkpoint624 accepted;625 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+624 canonical keygen_top624_canonical accepted2/2,0/0,five standard-only axiom results, evidence verified. Complete selected original make_fg body is constructed
+from623 and its actual call returns to solve_NTRU_deepest on the same witness.
+Original deepest part2 workspace/make sequence executes; both exact335-word
+sections survive at caller and fd/gd are proved to be fp/gp roots and array
+bindings. No desired run/output premise; executed-word scope only.
+11.555s,maxRSS4002916KiB. ENTRY74673/predecessor62353 unchanged before/after.
+Four local attempts accepted,0 failures; no new counterexample/resource
+failure/suppression/failed cache. Independent review NOT_RUN. Prior retained
+findings remain. Report/evidence KEYGEN_MAKEFG_RETURN_217_624_REPORT.md and
+matching JSON; failure register KEYGEN_MAKEFG_RETURN_217_FAILURES_624.json.
+Next625 actual deepest CRT reconstruction of selected fp/gp, then real
+zint_bezout branch and further root solve, certificate/codec/full B1. No
+mathematical NTT/root/table/CRT/centering/Montgomery/integer law or broad
+KeyGen/Sign/compiler/security/unconditional positivity/probability.
+Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign
+unchanged. Foreign PROMPT_T14 untouched; one Lean job, -M6144 fixed; no push.
+Continue after checkpoint.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; selected original outer loop checkpoint623 accepted;624 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -11849,3 +11873,19 @@ Job record (623): keygen_outer623_002 — ACCEPTED_LOCAL audit, one public inter
 Job record (623): canonical keygen_outer623_canonical — ACCEPTED2/2,0/0,one standard-only axiom result, 23.383s,maxRSS4176388KiB. Entry74673/predecessor622255 unchanged; next evidence/local commit then top continuation.
 
 Job record (623 checkpoint): evidence PASS53 bindings,2 accepted/one standard-only result, zero failed attempts; entry74673/predecessor622255 unchanged. Exact own paths only; foreign work excluded, no push. Continue624 selected top continuation.
+
+Job record (624 start):623 committed845a6042; no push. Continue selected source top from composed make_fg into actual caller/root-solve seam; runtime .build/top624. Verify entry/predecessor before first proof job.
+
+Job record (624): fresh ENTRY74673 and predecessor62353 evidence bindings verified before first624 source/job. Next original make_fg body, deepest caller return and preserved selected output sections.
+
+Job record (624): keygen_top624_001 — ACCEPTED_LOCAL SelectedMakeFgReturn217,3.924s,0/0: actual full make_fg body and deepest caller return preserve both selected335-word images. Extended unsealed module to include deepest part2 workspace sequence; rebuild next.
+
+Job record (624): keygen_top624_002 — ACCEPTED_LOCAL SelectedMakeFgReturn217,4.074s,0/0: actual make_fg body, deepest call return and original deepest part2 workspace/make sequence preserve both335-word output images. Next explicitly bind these roots to fp/gp.
+
+Job record (624): keygen_top624_003 — ACCEPTED_LOCAL SelectedMakeFgReturn217,5.728s,0/0: output fd/gd roots are exactly deepest fp/gp and returned caller bindings; both335-word images reach original deepest part2. Next audit/canonical replay.
+
+Job record (624): keygen_top624_004 — ACCEPTED_LOCAL audit, one main interface/five axiom results,0/0. Next canonical replay and pin verification.
+
+Job record (624): canonical keygen_top624_canonical — ACCEPTED2/2,0/0,five standard-only axiom results, 11.555s,maxRSS4002916KiB. Entry74673/predecessor62353 unchanged; next evidence/local commit then deepest CRT.
+
+Job record (624 checkpoint): evidence PASS74 bindings,2 accepted/five standard-only results, zero failed attempts; entry74673/predecessor62353 unchanged. Exact own paths only; foreign work excluded, no push. Continue625 deepest CRT.
