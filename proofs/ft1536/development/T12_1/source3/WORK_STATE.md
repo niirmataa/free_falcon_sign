@@ -1,3 +1,29 @@
+# SEED9_R1 — ACTIVE; conditional bezout initialization/zeroing checkpoint631 accepted;632 next
+
+Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
+migration. Overall B1 IN_PROGRESS / NOT_REVIEWED.
+631 canonical keygen_init631_canonical accepted11/11,0/0,28 standard-only axiom results, evidence verified. Under explicit selected good-guard condition, original
+Bezout initialization now executes first two copies, alen/blen assignments,
+u0[0]=1 and u0/v0 memzero statements. Exact zero-word ranges exported, including
+ny=1 empty first range; x/y and a/b images and u0[0] survive on one witness.
+Guard truth remains unknown; no unconditional reachability, complete Bezout
+initialization or success is claimed.
+39.098s,maxRSS3732216KiB. ENTRY74673/predecessor630186 unchanged before/after.
+Sixteen local attempts retain six corrected elaboration/lint failures; fixed
+limits unchanged. No new mathematical counterexample/resource failure/
+suppression/failed cache. Independent review NOT_RUN. Prior retained findings
+remain. Report/evidence KEYGEN_BEZOUT_INIT_ZERO_217_631_REPORT.md and matching
+JSON; failure register KEYGEN_BEZOUT_INIT_ZERO_217_FAILURES_631.json.
+Next632 remaining original Bezout initialization: u1/v1 copies, v1 low-bit
+update, upper-word zeroing; then full algorithm/actual return, root/certificate/
+codec/full B1. No mathematical NTT/root/table/CRT/centering/Montgomery/integer
+law or broad KeyGen/Sign/compiler/security/unconditional positivity/probability.
+Permanent195 bad bodyHeap/stepState UNUSED; Old110/measured/five do_sign
+unchanged. Foreign PROMPT_T14 untouched; one Lean job, -M6144 fixed, no push.
+Continue.
+
+Previous snapshots and job records follow unchanged.
+
 # SEED9_R1 — ACTIVE; conditional bezout initialization copies checkpoint630 accepted;631 next
 
 Owner resumed2026-10-28; continue source3, no push/subagents/reviewers/relay/
@@ -12239,3 +12265,43 @@ Job record (630): keygen_init630_012 — ACCEPTED_LOCAL audit, four interfaces/1
 Job record (630): canonical keygen_init630_canonical — ACCEPTED7/7,0/0,17 standard-only axiom results, 48.633s,maxRSS4502852KiB. Entry74673/predecessor629151 unchanged; next evidence/local commit then remaining initialization.
 
 Job record (630 checkpoint): evidence PASS186 bindings,7 accepted/17 standard-only results, three retained failures; entry74673/predecessor629151 unchanged. Exact own paths include diagnostic sources; foreign work excluded, no push. Continue631 remaining initialization.
+
+Job record (631 start):630 committed38e5c5f0; no push. Continue original Bezout initialization under explicit good branch: length assignments, initial store, memset and further copies; runtime .build/bezoutinit631. Verify entry/predecessor before first proof job.
+
+Job record (631): fresh ENTRY74673 and predecessor630186 evidence bindings verified before first631 source/job. Next actual alen/blen assignments and u0[0]=1 store.
+
+Job record (631): keygen_init631_001 — RETAINED elaboration failure,9.438s: omitted explicit intermediate/value in length-cell frame prevented unification; raw snapshot/log retained, fix structural projections.
+
+Job record (631): keygen_init631_002 — ACCEPTED_LOCAL BezoutInitStore217,11.590s,0/0: original alen=xlen, blen=ylen and u0[0]=1 execute with explicit ordinary input frame; copied data can be preserved by separation. Next selected good-branch instantiation.
+
+Job record (631): keygen_init631_003 — ACCEPTED_LOCAL BezoutInitStoreCells217,3.423s,0/0: original alen/blen declarations and u0 pointer are structurally available after source pointer setup. Next bind selected good-case store.
+
+Job record (631): keygen_init631_004 — RETAINED elaboration failure,3.825s: generic length-cell lemma arguments could not be inferred through selected snapshot state. Raw snapshot/log retained; pass explicit base and images.
+
+Job record (631): keygen_init631_005 — ACCEPTED_LOCAL SelectedBezoutInitStore217,3.124s,0/0: under explicit good guard, selected execution continues through copied inputs, alen/blen assignments and u0[0]=1, preserving x/y/a/b word images. Next source memzero operations.
+
+Job record (631): keygen_init631_006 — RETAINED elaboration failure,3.280s: zero-byte if simplification and constructor inference needed explicit forms. Raw snapshot/log retained; correct without suppressions.
+
+Job record (631): keygen_init631_007 — RETAINED warning/error failure,2.671s: deprecated if_pos and second byte-if normalization. Raw snapshot/log retained; use ite_eq_left and explicit condition.
+
+Job record (631): keygen_init631_008 — ACCEPTED_LOCAL BezoutMemzero217,3.874s,0/0: exact byte-zero snapshot, outside-read frame and zero-word load. Next original u0/v0 memset source with symbolic positive lengths.
+
+Job record (631): keygen_init631_009 — RETAINED elaboration failure,7.584s: final zero-frame inequality has unreduced zero-offset additions. Raw snapshot/log retained; normalize offsets explicitly.
+
+Job record (631): keygen_init631_010 — ACCEPTED_LOCAL BezoutInitZero217,7.484s,0/0: original u0+1/ylen-1 and v0/xlen memset statements execute for symbolic bounded positive ylen, preserving u0[0]=1. Next selected good-branch instantiation and data frame.
+
+Job record (631): keygen_init631_011 — ACCEPTED_LOCAL2/2,0/0: generic double-memzero outside-data frame and alen/blen store-frame facts preserve xlen/ylen, u0/v0 and heap metadata. Next selected good-branch instantiation.
+
+Job record (631): keygen_init631_012 — RETAINED elaboration failure,2.673s: rewrite did not unfold local mid abbreviation for heap metadata. Raw snapshot/log retained; introduce explicit mid-to-finish frame equalities.
+
+Job record (631): keygen_init631_013 — ACCEPTED_LOCAL SelectedBezoutInitZero217,2.771s,0/0: under good guard, selected source executes alen/blen/u0[0] store and both original u0/v0 zeroing calls while preserving x/y/a/b images and u0[0]=1. Next export zero-word images.
+
+Job record (631): keygen_init631_014 — ACCEPTED_LOCAL BezoutInitZeroImages217,2.470s,0/0: both zeroed word ranges are exact, including ny=1 empty range; first zero range survives second memset. Next export them on selected good-branch witness.
+
+Job record (631): keygen_init631_015 — ACCEPTED_LOCAL3/3,0/0: selected good-branch chain exports exact u0 tail/v0 zero-word ranges, u0[0]=1 and preserved x/y/a/b images on same witness. Next audit/canonical replay.
+
+Job record (631): keygen_init631_016 — ACCEPTED_LOCAL audit, six interfaces/28 axiom results,0/0. Next canonical eleven-module replay, pin recheck and evidence.
+
+Job record (631): canonical keygen_init631_canonical — ACCEPTED11/11,0/0,28 standard-only axiom results, 39.098s,maxRSS3732216KiB. Entry74673/predecessor630186 unchanged; next evidence/local commit then remaining initialization.
+
+Job record (631 checkpoint): evidence PASS260 bindings,11 accepted/28 standard-only results, six retained failures; entry74673/predecessor630186 unchanged. Exact own paths only; foreign work excluded, no push. Continue632 remaining initialization.
